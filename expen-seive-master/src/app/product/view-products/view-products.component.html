@@ -1,0 +1,118 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="content">
+    
+          <div class="header">
+            <h4 class="title">Products</h4>
+          </div><br>
+
+        <input 
+          ngModel 
+          #query
+          name="search" 
+          type="text" class="form-control" placeholder="Search..."
+          style="margin:5px;"
+          (keyup)="filter(query.value)"
+        >
+        <br>
+        <data-table
+          [items]="items"
+          [itemCount]="itemCount"
+          (reload)="reloadProducts($event)"
+        >
+          
+          <data-table-column
+            [header]="'Name'"
+            [property]="'name'"
+            [sortable]="true"
+            [resizable]="true"
+          >
+          </data-table-column>
+
+          <data-table-column
+            [header]="'Company'"
+            [property]="'company'"
+            [sortable]="true"
+            [resizable]="true"
+          >
+          </data-table-column>
+
+          <data-table-column
+            [header]="'HSN Code'"
+            [property]="'hsnCode'"
+            [sortable]="true"
+            [resizable]="true"
+          >
+          </data-table-column>
+
+          <data-table-column
+            [header]="'Type'"
+            [property]="'type'"
+            [sortable]="true"
+            [resizable]="true"
+          >
+          </data-table-column>
+
+          <data-table-column
+            [header]="'Reorder Lvl'"
+            [property]="'reorderLevel'"
+            [sortable]="true"
+            [resizable]="true"
+          >
+          </data-table-column>
+
+          <data-table-column
+            [header]="'Stock'"
+            [property]="'stock'"
+            [sortable]="true"
+            [resizable]="true"
+          >
+          <ng-template #dataTableCell let-item="item">
+            {{item.stock + ' ' + item.mtrQty}}
+          </ng-template>
+          </data-table-column>
+
+          <data-table-column
+            [header]="'Price'"
+            [property]="'price'"
+            [sortable]="true"
+            [resizable]="true"
+          >
+          <ng-template #dataTableCell let-item="item">
+            {{'&#x20b9;' + item.price}}
+          </ng-template>
+          </data-table-column>
+
+          <data-table-column
+            [property]="'id'"
+          >
+            <ng-template #dataTableCell let-item="item">
+              <a 
+                (click)="editProduct(item.id)">
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+              </a>
+              &nbsp;
+              <a 
+                rel="tooltip" 
+                title="Remove" 
+                style="color: #EE2D20;"
+                (click)="deleteProduct(item.id)">
+                  <i class="fa fa-times"></i>
+              </a>
+            </ng-template>
+          </data-table-column>
+
+          <!-- <data-table-column
+            [property]="'id'"
+          >
+            <ng-template #dataTableCell let-item="item">
+                
+            </ng-template>
+          </data-table-column> -->
+        </data-table>
+        <br><br><br>
+      </div>
+    </div>
+  </div>
+</div>

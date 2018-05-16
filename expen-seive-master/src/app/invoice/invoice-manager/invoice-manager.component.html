@@ -1,0 +1,44 @@
+<div class="main-content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <!--Tabs Start-->
+          <ul role="tablist" class="nav nav-tabs">
+            <li role="presentation" class="active">
+              <a href="#icon-account #add-invoice" data-toggle="tab">
+                <i class="fa fa-user"></i> Add Invoice</a>
+            </li>
+            <li>
+              <a href="#icon-style #view-invoice" data-toggle="tab">
+                <i class="fa fa-user"></i> View Invoice</a>
+            </li>
+            <!-- <li>
+              <a href="#icon-style #add-product" data-toggle="tab">
+              <i class="fa fa-info"></i> Add Product</a>
+            </li> -->
+          </ul>
+          <!--Tab End-->
+  
+          <!--Content Start-->
+          <div class="tab-content">
+  
+            <div id="add-invoice" class="tab-pane active">
+              <invoice></invoice>
+            </div>
+            
+            <!--add Product page-->
+            <div id="view-invoice" class="tab-pane">
+              <view-invoice></view-invoice>
+            </div>
+  
+            <!--add product type page-->
+            <!-- <div id="add-type" class="tab-pane">
+              <add-product-type></add-product-type>
+            </div> -->
+          </div>
+          <!--Content End-->
+        </div>
+  
+      </div>
+    </div>
+  </div>

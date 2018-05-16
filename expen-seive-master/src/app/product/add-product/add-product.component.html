@@ -1,0 +1,98 @@
+<!-- <div class="main-content"> -->
+  <!-- <div class="container-fluid"> -->
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="content">
+            <form #productForm="ngForm" (ngSubmit)="submit(productForm)">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Product Name</label>
+                    <input required [(ngModel)]="pname" name="ProductName" type="text" class="form-control" placeholder="Name" value="">
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                  <div class="col-md-6">
+                      <div class="form-group">
+                        <label>HSN Code</label>
+                        <input required [(ngModel)]="hsnCode" name="hsnCode" type="number" class="form-control" placeholder="00000000" value="">
+                      </div>
+                    </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label>Company</label>
+                    <ng-select2
+                      required  
+                      ngModel 
+                      name="companyName" 
+                      [value]="companyId"
+                      [data]="companies" 
+                      [options]="options" 
+                      [width]="240" id="company" 
+                      style="width:100% !important"
+                      (valueChanged)="companyValueChanged($event)">
+                    </ng-select2>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label>Product Type</label>
+                    <ng-select2
+                      required
+                      ngModel 
+                      name="productType" 
+                      [value]="prodTypeId"
+                      [data]="productTypes"
+                      [options]="options"
+                      [width]="240 "  
+                      id="company"
+                      style="width:100% !important"
+                      (valueChanged)="companyValueChanged($event)" >
+                    </ng-select2>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label>stock</label>
+                    <input required [(ngModel)]="stock" name="quantity" type="text" class="form-control" placeholder="How many Mtr/Pcs..." value="">
+                  </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                      <label>Re-Order Level</label>
+                      <input required [(ngModel)]="reorderLvl" name="reorderLevel" type="text" class="form-control" placeholder="Value">
+                    </div>
+                  </div>
+              </div>
+
+              <div class="row">
+                  <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Rate (per unit)</label>
+                        <input required [(ngModel)]="price" name="productPrice" type="text" class="form-control" placeholder="Price(₹)" value="">
+                      </div>
+                    </div>
+              </div>
+              <div class="col-md-6">
+                <button type="submit" class="btn btn-default btn-fill pull-right">Add</button>
+              </div>
+              <div class="clearfix"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  <!-- </div> -->
+<!-- </div> -->

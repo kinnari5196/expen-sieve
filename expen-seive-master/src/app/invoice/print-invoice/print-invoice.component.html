@@ -1,0 +1,147 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="content">
+
+
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="invoice-title">
+              <img class="" style="margin-top: -20px" src="../../../assets/img/shankar-textile-logo-small.png" height="35px" width="30px" alt="">
+              <h2 style="display: inline-block">SHANKAR TEXTILE</h2>
+              <h3 style="padding-top: 20px" class="pull-right">Order # {{invoiceNo}}</h3>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-xs-6">
+                <address>
+                  <strong>Billed To:</strong>
+                  <br> {{customerName}}
+                  <br> {{customerAddress}}
+                  <br> {{customerArea}}, {{customerCity}}
+                  <br> {{customerState}}, {{customerPincode}}
+                  <br><br> <strong> GST No: </strong> <br> {{customerGstNo}}
+                </address>
+              </div>
+              <div class="col-xs-6 text-right">
+                <address>
+                  <strong>Shipped To:</strong>
+                  <br> {{customerName}}
+                  <br> {{customerAddress}}
+                  <br> {{customerCity}}
+                  <br> {{customerState}}, {{customerPincode}}
+                </address>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6">
+                <address>
+                  <strong>Payment Method:</strong>
+                  <br> {{invoiceCashCredit}}
+                  <!-- <br> jsmith@email.com -->
+                </address>
+              </div>
+              <div class="col-xs-6 text-right">
+                <address>
+                  <strong>Order Date:</strong>
+                  <br> {{invoiceDate | date:'longDate'}}
+                  <br>
+                  <br>
+                </address>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">
+                  <strong>Order summary</strong>
+                </h3>
+              </div>
+              <div class="panel-body">
+                <div class="table-responsive">
+                  <table class="table table-condensed">
+                    <thead>
+                      <tr>
+                        <td>
+                          <strong>Item</strong>
+                        </td>
+                        <td class="text-center">
+                          <strong>Price</strong>
+                        </td>
+                        <td class="text-center">
+                          <strong>Quantity</strong>
+                        </td>
+                        <td class="text-right">
+                          <strong>Totals</strong>
+                        </td>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <!-- foreach ($order->lineItems as $line) or some such thing here -->
+                      <tr *ngFor="let row of itemRows; let i = index">
+                        <td>{{row[0] + ' - ' + row[1]}}</td>
+                        <td class="text-center">&#x20b9;{{row[2]}}</td>
+                        <td class="text-center">{{row[3]}}</td>
+                        <td class="text-right">&#x20b9;{{row[4]}}</td>
+                      </tr>
+                      <tr>
+                        <td class="thick-line"></td>
+                        <td class="thick-line"></td>
+                        <td class="thick-line text-center">
+                          <strong>Subtotal</strong>
+                        </td>
+                        <td class="thick-line text-right">&#x20b9;{{subTotal}}</td>
+                      </tr>
+                      <tr>
+                        <td class="no-line"></td>
+                        <td class="no-line"></td>
+                        <td class="no-line text-center">
+                          <strong>CGST{{'(' + cgstPer + '%)'}} + SGST{{'(' + sgstPer + '%)'}} </strong>
+                        </td>
+                        <td class="no-line text-right">&#x20b9;{{totTax}}</td>
+                      </tr>
+                      <tr>
+                          <td class="no-line"></td>
+                          <td class="no-line"></td>
+                          <td class="no-line text-center">
+                            <strong>IGST{{'(' + igstPer + '%)'}}</strong>
+                          </td>
+                          <td class="no-line text-right">&#x20b9;{{igstAmt}}</td>
+                        </tr>
+                      <tr>
+                        <td class="no-line"></td>
+                        <td class="no-line"></td>
+                        <td class="no-line text-center">
+                          <strong>{{additionalExpTxt}}</strong>
+                        </td>
+                        <td class="no-line text-right">&#x20b9;{{additionalExpAmt}}</td>
+                      </tr>
+                      
+                      <tr>
+                        <td class="thick-line"></td>
+                        <td class="thick-line"></td>
+                        <td class="thick-line text-center">
+                          <strong>Total</strong>
+                        </td>
+                        <td class="thick-line text-right">&#x20b9;{{grandTotal}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="padding: 15px 15px 10px 15px;" class="row no-print">
+          <button class="btn btn-fill btn-default pull-right" (click)="print();"><i class="pe-7s-print"></i> Print</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
