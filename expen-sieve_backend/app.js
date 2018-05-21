@@ -19,7 +19,9 @@ var Bank=require("./routes/bank");
 var Company=require("./routes/comapny");
 var Customer_seller=require("./routes/customerseller");
 var Invoice=require("./routes/invoice");
-
+var Voucher=require('./routes/vouchers');
+var Purchase_items=require('./routes/purchase_items');
+var Purchase=require('./routes/purchase');
 
 
 var app = express();
@@ -50,6 +52,10 @@ app.use('/bank',Bank);
 app.use('/company',Company);
 app.use('/customerseller',Customer_seller);
 app.use('/invoice',Invoice);
+app.use('/voucher',Voucher);
+app.use('/purchaseitems',Purchase_items);
+app.use('/purchase',Purchase);
+
 
 
 
