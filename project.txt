@@ -1,0 +1,39 @@
+state nu model banavu bakend ma
+** Accont master ma alag alag balance jay 6 as per account
+** get_invoice_product.php ae dropdown mate 6 evu lage 6(doubt)
+** get_customer_sellert.php ae dropdown mate 6 evu lage 6(doubt)
+** get_company.php ae dropdown mate 6 evu lage 6(doubt)**Company nu display banavu frontend max
+** get_all_product_type ae dropdown mate 6  and display mate b 6 evu lage 6(doubt)
+** get_customer.php ae invoice  dropdown mate 6 evu lage 6(doubt)[customer na dropdown mate]
+** get_all_customer.php ae dropdown mate 6  for invoice evu lage 6(doubt)
+** get_acgroup.php ae dropdown 6(doubt)
+**********Delete banava mate update kri 6 nad ema isactive ne false kri dae 6**************
+Invoice Model:::
+1. is-igst_applicable.php
+2. invoice_insert.php ema invoice mathi innsert kadhi ne aa page nu insert apply krvu.invoice_item jode joinn jevu thse
+3.get_price_product
+
+voucher Model::::
+1. get_voucher ma getallvoucher ma get_voucher.php no code
+2. get_single_invoice.php
+
+Product model
+1. get_single_product.php
+
+
+
+cusromer_seller model
+1. get_single_customer_seller.php(Byid vali query ma change karvo)
+2.get_all_seller.php
+3.get_all_customer.php
+
+Bank model
+1. get_single_bank.php(Byid ma change thse)
+
+ac_entity Model
+1. get_single)acentity.php(Byid ma change thse)
+
+
+Product_type_model 
+1.get_producttype_company.php(get ni query ma join aavse)
+

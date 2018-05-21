@@ -36,7 +36,7 @@ require 'connection.php';
       
      // $bid=1;
      // $ss="active";
-    $qry="SELECT * FROM business_info WHERE business_name='".$bn."' AND password='".$pass."'";
+  $qry="SELECT * FROM business_info WHERE business_name='".$bn."' AND password='".$pass."'";
   $rs=mysqli_query($conn,$qry);
                                                                                    
                    if($rs->num_rows>0)
