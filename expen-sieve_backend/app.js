@@ -11,6 +11,16 @@ var Invoiceitems=require('./routes/invoiceitems');
 var Phoneno=require('./routes/phoneno');
 var Product=require('./routes/product');
 var Producttype=require('./routes/producttype');
+var Acentity=require('./routes/acentity');
+var Acgroup=require('./routes/acgroup');
+var Acmaster=require('./routes/acmaster');
+var Address=require("./routes/address");
+var Bank=require("./routes/bank");
+var Company=require("./routes/comapny");
+var Customer_seller=require("./routes/customerseller");
+var Invoice=require("./routes/invoice");
+
+
 
 var app = express();
 
@@ -32,10 +42,20 @@ app.use('/invoiceitems',Invoiceitems);
 app.use('/phoneno',Phoneno);
 app.use('/product',Product);
 app.use('/producttype',Producttype);
+app.use('/acentity',Acentity);
+app.use('/acgroup',Acgroup);
+app.use('/acmaster',Acmaster);
+app.use('/address',Address);
+app.use('/bank',Bank);
+app.use('/company',Company);
+app.use('/customerseller',Customer_seller);
+app.use('/invoice',Invoice);
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  next(createError(404));
+next(createError(404));
 });
 
 // error handler
