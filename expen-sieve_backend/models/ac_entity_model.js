@@ -1,6 +1,6 @@
 
 var db=require('../dbconnection'); //reference of dbconnection.js
- //krishma is here
+
 var Ac_entity={
  
 getAllEntity:function(callback){

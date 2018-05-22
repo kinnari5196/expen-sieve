@@ -5,13 +5,13 @@ var Product={
  
 getAllProduct:function(callback){
  
-return db.query("Select * from product",callback);
+return db.query("select p.*,pt.*,c.*,bi.* from product as p,product_type as pt,company as c,business_info as bi  where p.fk_product_type_id=pt.product_type_id and p.fk_company_id=c.company_id and p.fk_business_id=bi.business_id and p.isactive=0 and pt.isactive=0 and c.isactive=0",callback);
  
 },
 
 getProductbyid:function(id,callback)//aa bdhi model ma nakhvu
 {
-return db.query("Select * from product where product_id=?",[id],callback);
+return db.query(" select p.*,pt.*,c.*,bi.* from product as p,product_type as pt,company as c,business_info as bi  where p.fk_product_type_id=pt.product_type_id and p.fk_company_id=c.company_id and p.fk_business_id=bi.business_id and p.isactive=0 and pt.isactive=0 and c.isactive=0 and product_id=?",[id],callback);
 },
 
 addProduct:function(Product,callback){

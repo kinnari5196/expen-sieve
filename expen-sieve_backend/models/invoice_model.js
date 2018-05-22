@@ -5,13 +5,13 @@ var Invoice={
  
 getAllInvoice:function(callback){
  
-return db.query("Select * from invoice",callback);
+return db.query("select invo.*,cs.*,bi.*,pin.*,phn.*,c.*,s.* from invoice as invo,customer_seller as cs,business_info as bi,address as pin,phone_no as phn,city as c,state as s  where invo.fk_cs_id=cs.cs_id	and invo.fk_business_id=bi.business_id and cs.fk_pincode=pin.pincode and pin.fk_city_id=c.city_id and c.fk_state_id=s.state_id and cs.fk_phone_id=phn.phone_id and invo.isactive=0",callback);
  
 },
 
 getInvoicebyid:function(id,callback)//aa bdhi model ma nakhvu
 {
-return db.query("Select * from invoice where invoice_id=?",[id],callback);
+return db.query(" select invo.*,cs.*,bi.*,pin.*,phn.*,c.*,s.* from invoice as invo,customer_seller as cs,business_info as bi,address as pin,phone_no as phn,city as c,state as s  where invo.fk_cs_id=cs.cs_id	and invo.fk_business_id=bi.business_id and cs.fk_pincode=pin.pincode and pin.fk_city_id=c.city_id and c.fk_state_id=s.state_id and cs.fk_phone_id=phn.phone_id and invo.isactive=0 and invoice_id=?",[id],callback);
 },
 
 addInvoice:function(Invoice,callback){
