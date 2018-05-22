@@ -1,6 +1,6 @@
-
+//hiii aesha
 var db=require('../dbconnection'); //reference of dbconnection.js
- 
+ //hello krishma
 var Ac_master={
  
 getAllMaster:function(callback){
