@@ -5,13 +5,13 @@ var Ac_master={
  
 getAllMaster:function(callback){
  
-return db.query("Select * from ac_master",callback);
+return db.query("Select master.*,entity.*,grp.*,bi.* from ac_master as master,ac_entity as entity,ac_group as grp,business_info as bi where master.fk_entity_id=entity.entity_id and master.fk_group_id=grp.group_id and master.fk_business_id=bi.business_id",callback);
  
 },
 
 getMasterbyid:function(id,callback)//aa bdhi model ma nakhvu
 {
-return db.query("Select * from ac_master where account_id=?",[id],callback);
+return db.query("Select master.*,entity.*,grp.*,bi.* from ac_master as master,ac_entity as entity,ac_group as grp,business_info as bi where master.fk_entity_id=entity.entity_id and master.fk_group_id=grp.group_id and master.fk_business_id=bi.business_id and account_id=?",[id],callback);
 },
 
 addMaster:function(Ac_master,callback){

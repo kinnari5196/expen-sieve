@@ -1,5 +1,7 @@
 
 var db=require('../dbconnection'); //reference of dbconnection.js
+
+//const pgp1 = db.$config.pgp;
  
 var Customer_seller={
  
@@ -16,7 +18,11 @@ return db.query(" select cs.*,pin.*,phn.*,bi.*,c.*,s.* from customer_seller as c
 
 addCustomer_seller:function(Customer_seller,callback){
 
-return db.query("insert into customer_seller(name,addressline,fk_pincode,fk_phone_id,gst_no,fk_business_id,type,isactive) values(?,?,?,?,?,?,?,?)",[Customer_seller.name,Customer_seller.addressline,Customer_seller.fk_pincode,Customer_seller.fk_phone_id,Customer_seller.gst_no,Customer_seller.fk_business_id,Customer_seller.type,Customer_seller.isactive],callback);
+//return db.query("insert into customer_seller(name,addressline,fk_pincode,fk_phone_id,gst_no,fk_business_id,type,isactive) values(?,?,?,?,?,?,?,?)",[Customer_seller.name,Customer_seller.addressline,Customer_seller.fk_pincode,Customer_seller.fk_phone_id,Customer_seller.gst_no,Customer_seller.fk_business_id,Customer_seller.type,Customer_seller.isactive],callback);
+
+//return db.query("INSERT ALL INTO  customer_seller (name,addressline,fk_pincode,fk_phone_id,gst_no,fk_business_id,type) values(?,?,?,?,?,?,?) INTO phone_no (phone_no1,phone_no2) values(?,?)  INTO ac_master(fk_entity_id,fk_group_id,date_since,amount,fk_business_id) values(?,?,?,?,?)",
+//[Customer_seller.name,Customer_seller.addressline,Customer_seller.fk_pincode,Customer_seller.fk_phone_id,Customer_seller.gst_no,Customer_seller.fk_business_id,Customer_seller.type,Customer_seller.phone_no1,Customer_seller.phone_no2,Customer_seller.fk_entity_id,Customer_seller.fk_group_id,Customer_seller.date_since,Customer_seller.amount,Customer_seller.fk_business_id],callback);
+
 },
 deleteCustomer_seller:function(id,callback){
 

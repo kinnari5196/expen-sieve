@@ -22,6 +22,9 @@ var Invoice=require("./routes/invoice");
 var Voucher=require('./routes/vouchers');
 var Purchase_items=require('./routes/purchase_items');
 var Purchase=require('./routes/purchase');
+var Example=require('./routes/examples');
+
+
 
 
 var app = express();
@@ -55,6 +58,7 @@ app.use('/invoice',Invoice);
 app.use('/voucher',Voucher);
 app.use('/purchaseitems',Purchase_items);
 app.use('/purchase',Purchase);
+app.use('/example',Example);
 
 
 

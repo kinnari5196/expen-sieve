@@ -2,7 +2,7 @@
 var db=require('../dbconnection'); //reference of dbconnection.js
 
 var Ac_entity={
- //kinnari
+ 
 getAllEntity:function(callback){
  
 return db.query("Select * from ac_entity",callback);
