@@ -16,7 +16,7 @@ return db.query("Select * from product_type where product_type_id=?",[id],callba
 
 addProducttype:function(Product_type,callback){
 
-return db.query("insert into product_type(description,meter_qty,isactive) values(?,?,?)",[Product_type.description,Product_type.meter_qty,Product_type.isactive],callback);
+return db.query("insert into product_type(description,meter_qty) values(?,?)",[Product_type.description,Product_type.meter_qty],callback);
 },
 deleteProducttype:function(id,callback){
 
@@ -24,7 +24,7 @@ deleteProducttype:function(id,callback){
 
 },
 updateProducttype:function(id,Product_type,callback){
-  return db.query("update product_type set description=?,meter_qty=?,isactive=? where product_type_id=?",[Product_type.description,Product_type.meter_qty,Product_type.isactive,id],callback);
+  return db.query("update product_type set description=?,meter_qty=? where product_type_id=?",[Product_type.description,Product_type.meter_qty,id],callback);
  }
  
  

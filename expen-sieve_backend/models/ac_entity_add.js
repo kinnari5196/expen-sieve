@@ -21,7 +21,7 @@ connection.connect(function(err) {
 /* Begin transaction */
 connection.beginTransaction(function(err) {
   if (err) { throw err; }
-  connection.query('INSERT INTO phone_no SET phone_no1=?,phone_no2=?', [Customer_seller.phone_no1,Customer_seller.phone_no2],function(err, result) {
+  connection.query('INSERT INTO ac_entity SET name=?,description=?,fk_business_id=?,gst_no=?', [Customer_seller.name,Customer_seller.description,1,Customer_seller.gst_no],function(err, result) {
     if (err) { 
       connection.rollback(function() {
         throw err;
@@ -30,23 +30,14 @@ connection.beginTransaction(function(err) {
  
     var log = result.insertId;
  
-    connection.query('INSERT INTO seller SET name=?,addressline=?,fk_pincode=?,fk_phone_id=?,gst_no=?', [Customer_seller.name,Customer_seller.addressline,Customer_seller.fk_pincode,log,Customer_seller.gst_no], function(err, result) {
+    connection.query('INSERT INTO ac_master SET fk_entity_id=?,fk_group_id=?,date_since=?,amount=?,gst_no=?', [log,Customer_seller.fk_group_id,Customer_seller.date_since,Customer_seller.amount,Customer_seller.gst_no], function(err, result) {
       if (err) { 
         connection.rollback(function() {
           throw err;
         });
       }  
 
-      var log2 = result.insertId;
-
- 
-    connection.query('INSERT INTO ac_master  SET fk_entity_id=?,fk_group_id=?,date_since=?,amount=?,gst_no=?', [log2,2,Customer_seller.date_since,Customer_seller.amount,Customer_seller.gst_no], function(err, result) {
-      if (err) { 
-        connection.rollback(function() {
-          throw err;
-        });
-      } 
-
+      
         
 
         connection.commit(function(err) {
@@ -60,7 +51,6 @@ connection.beginTransaction(function(err) {
       });
       });
   });
-});
 });
  }
   }

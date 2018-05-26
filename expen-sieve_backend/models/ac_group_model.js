@@ -16,7 +16,7 @@ return db.query("Select * from ac_group where group_id=?",[id],callback);
 
 addGroup:function(Ac_group,callback){
 
-return db.query("insert into ac_group(name,side,fk_business_id) values(?,?,?)",[Ac_group.name,Ac_group.side,Ac_group.fk_business_id],callback);
+return db.query("insert into ac_group(name,side) values(?,?)",[Ac_group.name,Ac_group.side],callback);
 },
 deleteGroup:function(id,callback){
 
@@ -24,7 +24,7 @@ deleteGroup:function(id,callback){
 
 },
 updateGroup:function(id,Ac_group,callback){
-  return db.query("update ac_group set name=?,side=?,fk_business_id=? where group_id=?",[Ac_group.name,Ac_group.side,Ac_group.fk_business_id,id],callback);
+  return db.query("update ac_group set name=?,side=? where group_id=?",[Ac_group.name,Ac_group.side,id],callback);
  }
  
  

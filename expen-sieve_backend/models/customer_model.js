@@ -30,7 +30,7 @@ deleteCustomer_seller:function(id,callback){
 
 },
 updateCustomer_seller:function(id,Customer_seller,callback){
-  return db.query("update customer set name=?, addressline=?, fk_pincode=?, fk_phone_id=?, gst_no=?, fk_business_id=?, isactive=?  where cs_id=?",[Customer_seller.name,Customer_seller.addressline,Customer_seller.fk_pincode,Customer_seller.fk_phone_id,Customer_seller.gst_no,Customer_seller.fk_business_id,Customer_seller.isactive,id],callback);
+  return db.query("update customer set name=?, addressline=?, fk_pincode=?, fk_phone_id=?, gst_no=?  where cs_id=?",[Customer_seller.name,Customer_seller.addressline,Customer_seller.fk_pincode,Customer_seller.fk_phone_id,Customer_seller.gst_no,id],callback);
  }
  
  

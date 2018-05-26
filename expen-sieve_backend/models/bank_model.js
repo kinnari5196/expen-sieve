@@ -16,7 +16,7 @@ return db.query("Select b.*,pin.*,c.*,s.* from bank as b,address as pin,city as 
 
 addBank:function(Bank,callback){
 
-return db.query("insert into bank(account_no,fk_pincode,name,bsrcode,addressline,gst_no,isactive) values(?,?,?,?,?,?,?)",[Bank.account_no,Bank.fk_pincode,Bank.name,Bank.bsrcode,Bank.addressline,Bank.gst_no,Bank.isactive],callback);
+return db.query("insert into bank(account_no,fk_pincode,name,bsrcode,addressline,gst_no) values(?,?,?,?,?,?)",[Bank.account_no,Bank.fk_pincode,Bank.name,Bank.bsrcode,Bank.addressline,Bank.gst_no],callback);
 },
 deleteBank:function(id,callback){
 
@@ -24,7 +24,7 @@ deleteBank:function(id,callback){
 
 },
 updateBank:function(id,Bank,callback){
-  return db.query("update bank set account_no=?,fk_pincode=?, name=?, bsrcode=?, addressline=?, gst_no=?, isactive=?  where account_no=?",[Bank.account_no,Bank.fk_pincode,Bank.name,Bank.bsrcode,Bank.addressline,Bank.gst_no,Bank.isactive,id],callback);
+  return db.query("update bank set account_no=?,fk_pincode=?, name=?, bsrcode=?, addressline=?, gst_no=?  where account_no=?",[Bank.account_no,Bank.fk_pincode,Bank.name,Bank.bsrcode,Bank.addressline,Bank.gst_no,id],callback);
  }
  
  

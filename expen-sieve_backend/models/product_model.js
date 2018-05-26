@@ -16,7 +16,7 @@ return db.query(" select p.*,pt.*,c.*,bi.* from product as p,product_type as pt,
 
 addProduct:function(Product,callback){
 
-return db.query("insert into product(fk_product_type_id,product_name,hsncode,fk_company_id,price,stock,reorder_level,fk_business_id,isactive) values(?,?,?,?,?,?,?,?,?)",[Product.fk_product_type_id,Product.product_name,Product.hsncode,Product.fk_company_id,Product.price,Product.stock,Product.reorder_level,Product.fk_business_id,Product.isactive],callback);
+return db.query("insert into product(fk_product_type_id,product_name,hsncode,fk_company_id,price,stock,reorder_level) values(?,?,?,?,?,?,?)",[Product.fk_product_type_id,Product.product_name,Product.hsncode,Product.fk_company_id,Product.price,Product.stock,Product.reorder_level],callback);
 },
 deleteProduct:function(id,callback){
 
@@ -24,7 +24,7 @@ deleteProduct:function(id,callback){
 
 },
 updateProduct:function(id,Product,callback){
-  return db.query("update product set fk_product_type_id=?,product_name=?,hsncode=?,fk_company_id=?,price=?,stock=?,reorder_level=?,fk_business_id=?,isactive=? where product_id=?",[Product.fk_product_type_id,Product.product_name,Product.hsncode,Product.fk_company_id,Product.price,Product.stock,Product.reorder_level,Product.fk_business_id,Product.isactive,id],callback);
+  return db.query("update product set fk_product_type_id=?,product_name=?,hsncode=?,fk_company_id=?,price=?,stock=?,reorder_level=? where product_id=?",[Product.fk_product_type_id,Product.product_name,Product.hsncode,Product.fk_company_id,Product.price,Product.stock,Product.reorder_level,id],callback);
                 
 }
  

@@ -16,7 +16,7 @@ return db.query("Select master.*,entity.*,grp.*,bi.* from ac_master as master,ac
 
 addMaster:function(Ac_master,callback){
 
-return db.query("insert into ac_master(fk_entity_id,fk_group_id,date_since,amount,fk_business_id) values(?,?,?,?,?)",[Ac_master.fk_entity_id,Ac_master.fk_group_id,Ac_master.date_since,Ac_master.amount,Ac_master.fk_business_id],callback);
+return db.query("insert into ac_master(fk_entity_id,fk_group_id,date_since,amount) values(?,?,?,?)",[Ac_master.fk_entity_id,Ac_master.fk_group_id,Ac_master.date_since,Ac_master.amount],callback);
 },
 deleteMaster:function(id,callback){
 
@@ -24,7 +24,7 @@ deleteMaster:function(id,callback){
 
 },
 updateMaster:function(id,Ac_master,callback){
-  return db.query("update ac_master set fk_entity_id=?, fk_group_id=?, date_since=?, amount=?, fk_business_id=?,gst_no=? where account_id=?",[Ac_master.fk_entity_id,Ac_master.fk_group_id,Ac_master.date_since,Ac_master.amount,Ac_master.fk_business_id,Ac_master.gst_no,id],callback);
+  return db.query("update ac_master set fk_entity_id=?, fk_group_id=?, date_since=?, amount=?,gst_no=? where account_id=?",[Ac_master.fk_entity_id,Ac_master.fk_group_id,Ac_master.date_since,Ac_master.amount,Ac_master.gst_no,id],callback);
  }
  
  

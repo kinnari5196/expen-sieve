@@ -25,6 +25,8 @@ var Purchase=require('./routes/purchase');
 var Customeradd=require('./routes/customeradd');
 var Seller=require('./routes/seller');
 var Selleradd=require('./routes/selleradd');
+var Acentityadd=require('./routes/acentityadd');
+
 
 
 
@@ -63,6 +65,9 @@ app.use('/purchase',Purchase);
 app.use('/customeradd',Customeradd);
 app.use('/seller',Seller);
 app.use('/selleradd',Selleradd);
+app.use('/acentityadd',Acentityadd);
+
+
 
 
 
