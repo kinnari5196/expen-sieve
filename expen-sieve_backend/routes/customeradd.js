@@ -1,6 +1,6 @@
 var express = require('express');
  var router = express.Router();
- var User=require('../models/example1');
+ var User=require('../models/customer_add');
 
 
 router.post('/',function(req,res,next){

@@ -1,6 +1,6 @@
 var express = require('express');
  var router = express.Router();
- var User=require('../models/customer_seller_model');
+ var User=require('../models/seller_model');
 
 router.get('/:id?',function(req,res,next){
     if(req.params.id){

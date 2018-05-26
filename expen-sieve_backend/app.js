@@ -17,12 +17,14 @@ var Acmaster=require('./routes/acmaster');
 var Address=require("./routes/address");
 var Bank=require("./routes/bank");
 var Company=require("./routes/comapny");
-var Customer_seller=require("./routes/customerseller");
+var Customer=require("./routes/customer");
 var Invoice=require("./routes/invoice");
 var Voucher=require('./routes/vouchers');
 var Purchase_items=require('./routes/purchase_items');
 var Purchase=require('./routes/purchase');
-var Example=require('./routes/examples');
+var Customeradd=require('./routes/customeradd');
+var Seller=require('./routes/seller');
+var Selleradd=require('./routes/selleradd');
 
 
 
@@ -53,12 +55,14 @@ app.use('/acmaster',Acmaster);
 app.use('/address',Address);
 app.use('/bank',Bank);
 app.use('/company',Company);
-app.use('/customerseller',Customer_seller);
+app.use('/customer',Customer);
 app.use('/invoice',Invoice);
 app.use('/voucher',Voucher);
 app.use('/purchaseitems',Purchase_items);
 app.use('/purchase',Purchase);
-app.use('/example',Example);
+app.use('/customeradd',Customeradd);
+app.use('/seller',Seller);
+app.use('/selleradd',Selleradd);
 
 
 
