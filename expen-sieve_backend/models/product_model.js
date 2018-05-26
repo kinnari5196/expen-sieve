@@ -20,7 +20,7 @@ return db.query("insert into product(fk_product_type_id,product_name,hsncode,fk_
 },
 deleteProduct:function(id,callback){
 
-    return db.query("delete from product where product_id=?",[id]),callback;
+    return db.query("update product set isactive=1 where product_id=?",[id]),callback;
 
 },
 updateProduct:function(id,Product,callback){

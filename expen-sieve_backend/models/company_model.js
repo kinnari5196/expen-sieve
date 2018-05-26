@@ -20,7 +20,7 @@ return db.query("insert into company(name,description) values(?,?)",[Company.nam
 },
 deleteCompany:function(id,callback){
 
-    return db.query("delete from company where company_id=?",[id]),callback;
+    return db.query("update company set isactive=1 where company_id=?",[id]),callback;
 
 },
 updateCompany:function(id,Company,callback){

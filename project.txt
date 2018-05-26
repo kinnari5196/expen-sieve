@@ -37,3 +37,4 @@ ac_entity Model
 Product_type_model 
 1.get_producttype_company.php(get ni query ma join aavse)
 
+*****************customer na delete ma phone no delete atle k isactive nthi thto km k ae no fk_phone_id mlto nthi eni file ma km k ae file put(update ni)6

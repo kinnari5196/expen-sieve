@@ -26,8 +26,13 @@ var Customeradd=require('./routes/customeradd');
 var Seller=require('./routes/seller');
 var Selleradd=require('./routes/selleradd');
 var Acentityadd=require('./routes/acentityadd');
-
-
+var DeleteBank=require('./routes/deletebank');
+var DeleteCompany=require('./routes/deletecompany');
+var DeleteCustomer=require('./routes/deletecustomer');
+var DeleteInvoice=require('./routes/deleteinvoice');
+var DeleteProduct=require('./routes/deleteproduct');
+var DeletePurchase=require('./routes/deletepurchase');
+var DeleteSeller=require('./routes/deleteseller');
 
 
 
@@ -66,8 +71,13 @@ app.use('/customeradd',Customeradd);
 app.use('/seller',Seller);
 app.use('/selleradd',Selleradd);
 app.use('/acentityadd',Acentityadd);
-
-
+app.use('/deletebank',DeleteBank);
+app.use('/deletecompany',DeleteCompany);
+app.use('/deletecustomer',DeleteCustomer);
+app.use('/deleteinvoice',DeleteInvoice);
+app.use('/deleteproduct',DeleteProduct);
+app.use('/deletepurchase',DeletePurchase);
+app.use('/deleteseller',DeleteSeller);
 
 
 
