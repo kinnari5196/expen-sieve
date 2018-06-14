@@ -3,7 +3,7 @@ import { DataTableResource } from 'angular-4-data-table-bootstrap-4';
 import { Product } from '../../models/product';
 import { Router } from '@angular/router';
 import { BackEndCalls } from '../../services/backendcalls.service';
-
+//kinnari
 @Component({
   selector: 'view-products',
   templateUrl: './view-products.component.html',

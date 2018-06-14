@@ -15,91 +15,36 @@
           style="margin:5px;"
           (keyup)="filter(query.value)"
         >
-        <br>
-        <data-table
-          [items]="items"
-          [itemCount]="itemCount"
-          (reload)="reloadAccount($event)"
-        >
+        
+        <br><br><br>
+        
+        <table class="table table-striped">
+          <tr>
+           <!-- <th><button (click)='deleteentity()' type="button" class="btn btn-danger">Delete all</button></th> -->
+            <th scope="col">Name</th>
+             <th scope="col">DEsc</th>
+            <th scope="col">Gst no</th>
+            <th scope="col">Delete</th>
+            <th scope="col">Edit</th>
+          </tr>
+          <tr *ngFor="let item of allEntity">
+           <!-- <td><input type="checkbox" (change)="addarr(item)"></td>-->
+          <td>{{item.name}}</td>
+          <td>{{item.description}}</td>
+          <td>{{item.gst_no}}</td>
+          <td>{{item.ac_gropup_name}}</td>
+
+        <td><!--<button  type="button" class="btn btn-danger">-->
+      <span (click)='deleteentity(item)' class="glyphicon glyphicon-trash" aria-hidden="true"  style="color:rgb(248, 12, 12);"></span></td>
+      
+      <td><!--<button  type="button" class="btn btn-success">-->
+      <span (click)=' updateEntity(item)' class="glyphicon glyphicon-pencil" aria-hidden="true" style="color:rgb(7, 250, 19);"></span></td>
+         </tr>
+        </table>
+
+       
           
-          <data-table-column
-            [header]="'Name'"
-            [property]="'name'"
-            [sortable]="true"
-            [resizable]="true"
-          >
-          </data-table-column>
-
-          <data-table-column
-            [header]="'Group'"
-            [property]="'acGroup'"
-            [sortable]="true"
-            [resizable]="true"
-          >
-          </data-table-column>
-
-          <data-table-column
-            [header]="'Description'"
-            [property]="'desc'"
-            [sortable]="true"
-            [resizable]="true"
-          >
-          </data-table-column>
-
-          <data-table-column
-            [header]="'GST No'"
-            [property]="'gstNo'"
-            [sortable]="true"
-            [resizable]="true"
-          >
-          </data-table-column>
-
-          <data-table-column
-            [header]="'Date'"
-            [property]="'date'"
-            [sortable]="true"
-            [resizable]="true"
-          >
-          </data-table-column>
-
-          <data-table-column
-            [header]="'Amount'"
-            [property]="'amt'"
-            [sortable]="true"
-            [resizable]="true"
-          >
-          <ng-template #dataTableCell let-item="item">
-            {{'&#x20b9;' + item.amt}}
-          </ng-template>
-          </data-table-column>
-
-          <data-table-column
-            [property]="'id'"
-          >
-            <ng-template #dataTableCell let-item="item">
-              <a 
-                (click)="editAccount(item.id)">
-                <i class="fa fa-pencil" aria-hidden="true"></i>
-              </a>
-              &nbsp;
-              <a 
-                rel="tooltip" 
-                title="Remove" 
-                style="color: #EE2D20;"
-                (click)="deleteAccount(item.id)">
-                  <i class="fa fa-times"></i>
-              </a>
-            </ng-template>
-          </data-table-column>
-
-          <!-- <data-table-column
-            [property]="'id'"
-          >
-            <ng-template #dataTableCell let-item="item">
-                
-            </ng-template>
-          </data-table-column> -->
-        </data-table>
+       
         <br><br><br>
       </div>
     </div>
