@@ -14,13 +14,13 @@ import { AddProductTypeComponent } from './product/add-product-type/add-product-
 import { ProductManagerComponent } from './product/product-manager/product-manager.component';
 import { LoginGuard } from './services/auth.loginguard';
 import { VoucherManagerComponent } from './voucher/voucher-manager/voucher-manager.component';
-import {InvoiceManagerComponent} from './invoice/invoice-manager/invoice-manager.component';
+import { InvoiceManagerComponent } from './invoice/invoice-manager/invoice-manager.component';
 import { PrintInvoiceComponent } from './invoice/print-invoice/print-invoice.component';
 import { CustomerManagerComponent } from './customer/customer-manager/customer-manager.component';
 import { BankManagerComponent } from './Bank/bank-manager/bank-manager.component';
 import { AddBankComponent } from './Bank/add-bank/add-bank.component';
-import {AccountingEntityManagerComponent} from './account-entity/accounting-entity-manager/accounting-entity-manager.component';
-import {BalancesheetComponent} from './balancesheet/balancesheet.component';
+import { AccountingEntityManagerComponent } from './account-entity/accounting-entity-manager/accounting-entity-manager.component';
+import { BalancesheetComponent } from './balancesheet/balancesheet.component';
 
 const routes: Routes =[
     { path: 'login',      component: LoginComponent},      

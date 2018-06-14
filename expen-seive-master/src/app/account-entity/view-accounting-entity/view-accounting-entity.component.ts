@@ -1,120 +1,62 @@
 import { Component, OnInit } from '@angular/core';
 import { DataTableResource } from 'angular-4-data-table-bootstrap-4';
 import { Router } from '@angular/router';
-import { BackEndCalls } from '../../services/backendcalls.service';
+//import { BackEndCalls } from '../../services/backendcalls.service';
+import { accounting_entity_manager } from './accounting-entity-manager';
+import { AccountEntityService } from './accounting-entity-manager.service';
 
-declare interface Accounts{
-  id:number;
-  name: string;
-  acGroup: string;
-  desc: string;
-  gstNo: string;
-  date: string;
-  amt: number;
-}
 
 @Component({
   selector: 'view-accounting-entity',
   templateUrl: './view-accounting-entity.component.html',
   styleUrls: ['./view-accounting-entity.component.scss']
 })
-export class ViewAccountingEntityComponent implements OnInit {
+export class ViewAccountEntity implements OnInit {
 
-  a: Accounts[] = [
-    {
-      id: 1,
-      name: 'polkaDot',
-      acGroup: 'shirt',
-      desc: 'mtr',
-      gstNo: 'asd513',
-      date: '2-2-2018',
-      amt: 500
-    },
-    {
-      id: 2,
-      name: 'Dot',
-      acGroup: 'shirt',
-      desc: 'mtr',
-      date: '2-2-2018',
-      gstNo: 'asd513',
-      amt: 500
-    },
-    {
-      id: 3,
-      name: 'pot',
-      acGroup: 'shirt',
-      desc: 'mtr',
-      date: '2-2-2018',
-      gstNo: 'asd513',
-      amt: 500
-    },
-   
-  ];
+  allEntity:accounting_entity_manager[]= [];
 
-  accounts: Accounts[] = [];  //Complete list of accounts
-  items: Accounts[] = [];     ///list of accounts only in current page
-  itemCount: number;
-  tableResourse: DataTableResource<Accounts>;
-
-  constructor(private router: Router, private service: BackEndCalls) { }
+  constructor(public data1:AccountEntityService,public _router:Router) { }
 
   ngOnInit() {
-  
-    // this.service.getAllAccountingEntity()
-    // .subscribe(response => {
-    //   console.log(response.json().accounts);
-    //   this.accounts = response.json().accounts;
-    //   this.initializeTable(this.accounts);
-    // });
-    console.log(this.accounts);
-    this.accounts = this.a;
-    this.initializeTable(this.accounts);
+
+
+         this.data1.getAllMaster().subscribe(
+
+          (data:any)=>{
+            this.allEntity=data;
+            this.allEntity=data;
+            
+            console.log(this.allEntity);
+
+          }
+    ); 
   }
 
-  private initializeTable(accounts: Accounts[]){
-    this.tableResourse = new DataTableResource(accounts);
-    this.tableResourse.query({offset: 0})
-      .then(items => this.items = items);
-    this.tableResourse.count()
-      .then(count => this.itemCount = count);
-  }
+  deleteentity(item:accounting_entity_manager){
 
-  reloadAccount(params){
+  this.data1.deleteEntity(item.entity_id).subscribe(
 
-    if(!this.tableResourse) return;
-
-    this.tableResourse.query(params)
-      .then(items => this.items = items);
-  }
-
-  filter(query: string){
-    let filteredAccountss = (query) ?
-      this.accounts.filter(p => p.name.toLowerCase().includes(query.toLowerCase())) : 
-      this.accounts;
-
-      this.initializeTable(filteredAccountss);
-  }
-
-  editAccount(id: number){
-    this.router.navigate(['/add-accounting-entity',id]);
-  }
-
-  deleteAccount(id: number){
-    this.service.deleteAccountingEntity(JSON.stringify({'id':id}))
-    .subscribe((data) => {
-      console.log(data);
-    });
-
-    this.items.forEach( (item, index) => {
-      if(item.id === id){
-         this.items.splice(index,1);
+    (data:any)=>{
+      this.allEntity.splice(this.allEntity.indexOf(item),1);
+      alert('udi gayu');
+    },
+      function(error){
+        alert('vaat lagshe');
+      },
+      function(){
+        console.log('badhu patyu');
       }
-    });
+  );
 
-    this.accounts.forEach( (item, index) => {
-      if(item.id === id){
-         this.accounts.splice(index,1);
-      }
-    });
+  }
+
+  /*addMenuitem(item:accounting_entity_manager)
+  {
+    this._router.navigate(['/addmenuitems',0]);
+  }*/
+
+  updateEntity(item:accounting_entity_manager)
+  {
+       this._router.navigate(['/addmenuitems',item.entity_id]);
   }
 }
