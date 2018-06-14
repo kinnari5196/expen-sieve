@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { DataTableResource } from 'angular-4-data-table-bootstrap-4';
-import { Product } from '../../models/product';
+import { product } from './product_class';
+import { ProductserviceService } from './productservice.service';
 import { Router } from '@angular/router';
-import { BackEndCalls } from '../../services/backendcalls.service';
-//kinnari
+
+
 @Component({
   selector: 'view-products',
   templateUrl: './view-products.component.html',
@@ -11,88 +12,29 @@ import { BackEndCalls } from '../../services/backendcalls.service';
 })
 export class ViewProductsComponent implements OnInit {
 
-  p: Product[] = [
-    {
-    id: 1,
-    company: 'Raymond',
-    name: 'polkaDot',
-    type: 'shirt',
-    mtrQty: 'mtr',
-    hsnCode: '998877',
-    stock: 30,
-    reorderLevel: 20,
-    price: 500
-   },
-   {
-    id: 2,
-    company: 'Qmax',
-    name: 'stripes',
-    type: 'pant',
-    mtrQty: 'mtr',
-    hsnCode: '998877',
-    stock: 30,
-    reorderLevel: 20,
-    price: 1500
-   },
-   {
-    id: 3,
-    company: 'Arvind',
-    name: 'Checks',
-    type: 'box',
-    mtrQty: 'qty',
-    hsnCode: '998877',
-    stock: 30,
-    reorderLevel: 20,
-    price: 600
-   },
-   {
-    id: 4,
-    company: 'Siyaram',
-    name: 'suit',
-    type: 'suit',
-    mtrQty: 'mtr',
-    hsnCode: '998877',
-    stock: 30,
-    reorderLevel: 20,
-    price: 12500
-   },
-   {
-    id: 5,
-    company: 'Siyaram',
-    name: 'shirt',
-    type: 'shirting',
-    mtrQty: 'mtr',
-    hsnCode: '998877',
-    stock: 30,
-    reorderLevel: 20,
-    price: 12500
-   }
-  ];
 
-  products: Product[] = [];  //Complete list of products
-  items: Product[] = [];     ///list of products only in current page
+  products: product[] = [];  //Complete list of products
+  items:product[] = [];     ///list of products only in current page
   itemCount: number;
-  tableResourse: DataTableResource<Product>;
+  tableResourse: DataTableResource<product>;
 
-  constructor(private router: Router, private service: BackEndCalls) { }
+  constructor(private router: Router, private data1:ProductserviceService) { }
 
   ngOnInit() {
   
-    this.service.getAllProducts()
-    .subscribe(response => {
-      console.log('idhar aya');
-      console.log(response.json().products);
-      //this.allVouchers = this.vouchers = response.json().voucher;
-      this.products = response.json().products;
-      this.initializeTable(this.products);
-    });
+    this.data1.getAllProduct().subscribe(
+
+          (data:any)=>{
+            this.products=data;
+            console.log(this.products);
+//this.accounts = this.allEntity;
+    this.initializeTable(this.products);
     console.log(this.products);
-    //this.products = this.p;
-    //this.products.push(this.p);
-   
+          }
+    );
   }
 
-  private initializeTable(products: Product[]){
+  private initializeTable(products: product[]){
     this.tableResourse = new DataTableResource(products);
     this.tableResourse.query({offset: 0})
       .then(items => this.items = items);
@@ -116,7 +58,7 @@ export class ViewProductsComponent implements OnInit {
       this.initializeTable(filteredProducts);
   }
 
-  editProduct(prodId: number){
+  /*editProduct(prodId: number){
     this.router.navigate(['/add-product',prodId]);
   }
 
@@ -137,5 +79,5 @@ export class ViewProductsComponent implements OnInit {
          this.products.splice(index,1);
       }
     });
-  }
+  }*/
 }

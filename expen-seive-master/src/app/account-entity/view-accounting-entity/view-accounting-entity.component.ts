@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { DataTableResource } from 'angular-4-data-table-bootstrap-4';
 import { Router } from '@angular/router';
-//import { BackEndCalls } from '../../services/backendcalls.service';
-import { accounting_entity_manager } from './accounting-entity-manager';
-import { AccountEntityService } from './accounting-entity-manager.service';
+import { AccountingEntityManagerService } from './accounting-entity-manager.service';
+import { accounting_entity_manager } from './accounting_entity_manager'; 
+
+
 
 
 @Component({
@@ -11,52 +12,56 @@ import { AccountEntityService } from './accounting-entity-manager.service';
   templateUrl: './view-accounting-entity.component.html',
   styleUrls: ['./view-accounting-entity.component.scss']
 })
-export class ViewAccountEntity implements OnInit {
-
+export class ViewAccountingEntityComponent implements OnInit {
   allEntity:accounting_entity_manager[]= [];
+  accounts: accounting_entity_manager[] = [];  //Complete list of accounts
+  items: accounting_entity_manager[] = [];     ///list of accounts only in current page
+  itemCount: number;
+  tableResourse: DataTableResource<accounting_entity_manager>;
 
-  constructor(public data1:AccountEntityService,public _router:Router) { }
+  constructor(private router: Router, private data1:AccountingEntityManagerService) { }
 
   ngOnInit() {
-
-
-         this.data1.getAllMaster().subscribe(
+  
+      this.data1.getAllMaster().subscribe(
 
           (data:any)=>{
             this.allEntity=data;
-            this.allEntity=data;
-            
             console.log(this.allEntity);
-
+this.accounts = this.allEntity;
+    this.initializeTable(this.accounts);
+    console.log(this.accounts);
           }
-    ); 
+    );
+  //  console.log(this.allEntity);
+    
   }
 
-  deleteentity(item:accounting_entity_manager){
-
-  this.data1.deleteEntity(item.entity_id).subscribe(
-
-    (data:any)=>{
-      this.allEntity.splice(this.allEntity.indexOf(item),1);
-      alert('udi gayu');
-    },
-      function(error){
-        alert('vaat lagshe');
-      },
-      function(){
-        console.log('badhu patyu');
-      }
-  );
-
+  private initializeTable(accounts: accounting_entity_manager[]){
+    this.tableResourse = new DataTableResource(accounts);
+    this.tableResourse.query({offset: 0})
+      .then(items => this.items = items);
+    this.tableResourse.count()
+      .then(count => this.itemCount = count);
   }
 
-  /*addMenuitem(item:accounting_entity_manager)
-  {
-    this._router.navigate(['/addmenuitems',0]);
-  }*/
+  reloadAccount(params){
 
-  updateEntity(item:accounting_entity_manager)
-  {
-       this._router.navigate(['/addmenuitems',item.entity_id]);
+    if(!this.tableResourse) return;
+
+    this.tableResourse.query(params)
+      .then(items => this.items = items);
   }
+
+  filter(query: string){
+    let filteredAccountss = (query) ?
+      this.accounts.filter(p => p.name.toLowerCase().includes(query.toLowerCase())) : 
+      this.accounts;
+
+      this.initializeTable(filteredAccountss);
+  }
+
+  
+
+
 }

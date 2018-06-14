@@ -24,7 +24,7 @@
           
           <data-table-column
             [header]="'Name'"
-            [property]="'name'"
+            [property]="'product_name'"
             [sortable]="true"
             [resizable]="true"
           >
@@ -32,7 +32,7 @@
 
           <data-table-column
             [header]="'Company'"
-            [property]="'company'"
+            [property]="'name'"
             [sortable]="true"
             [resizable]="true"
           >
@@ -40,7 +40,7 @@
 
           <data-table-column
             [header]="'HSN Code'"
-            [property]="'hsnCode'"
+            [property]="'hsncode'"
             [sortable]="true"
             [resizable]="true"
           >
@@ -48,7 +48,7 @@
 
           <data-table-column
             [header]="'Type'"
-            [property]="'type'"
+            [property]="'description'"
             [sortable]="true"
             [resizable]="true"
           >
@@ -56,7 +56,7 @@
 
           <data-table-column
             [header]="'Reorder Lvl'"
-            [property]="'reorderLevel'"
+            [property]="'reorder_level'"
             [sortable]="true"
             [resizable]="true"
           >
@@ -69,7 +69,7 @@
             [resizable]="true"
           >
           <ng-template #dataTableCell let-item="item">
-            {{item.stock + ' ' + item.mtrQty}}
+            {{item.stock + ' ' + item.meter_qty}}
           </ng-template>
           </data-table-column>
 
@@ -89,7 +89,7 @@
           >
             <ng-template #dataTableCell let-item="item">
               <a 
-                (click)="editProduct(item.id)">
+                (click)="editProduct(item.product_id)">
                 <i class="fa fa-pencil" aria-hidden="true"></i>
               </a>
               &nbsp;
@@ -97,7 +97,7 @@
                 rel="tooltip" 
                 title="Remove" 
                 style="color: #EE2D20;"
-                (click)="deleteProduct(item.id)">
+                (click)="deleteProduct(item.product_id)">
                   <i class="fa fa-times"></i>
               </a>
             </ng-template>

@@ -39,10 +39,12 @@ import { BankManagerComponent } from './Bank/bank-manager/bank-manager.component
 import { AddBankComponent } from './Bank/add-bank/add-bank.component';
 import { ViewBankComponent } from './Bank/view-bank/view-bank.component';
 import { AccountingEntityManagerComponent } from './account-entity/accounting-entity-manager/accounting-entity-manager.component';
-import { ViewAccountEntity } from './account-entity/view-accounting-entity/view-accounting-entity.component';
+import { ViewAccountingEntityComponent } from './account-entity/view-accounting-entity/view-accounting-entity.component';
 import { BalancesheetComponent } from './balancesheet/balancesheet.component';
-import { AccountEntityService } from './account-entity/view-accounting-entity/accounting-entity-manager.service';
+import { AccountingEntityManagerService } from './account-entity/view-accounting-entity/accounting-entity-manager.service';
 import { HttpClientModule } from '@angular/common/http';
+import { ProductserviceService } from './product/view-products/productservice.service';
+
 
 @NgModule({
   declarations: [
@@ -69,7 +71,7 @@ import { HttpClientModule } from '@angular/common/http';
     AddBankComponent,
     ViewBankComponent,
     AccountingEntityManagerComponent,
-    ViewAccountEntity,
+    ViewAccountingEntityComponent,
     BalancesheetComponent
   ],
   imports: [
@@ -90,7 +92,8 @@ import { HttpClientModule } from '@angular/common/http';
     BackEndCalls,
     AppSettings,
     LoginGuard,
-    AccountEntityService
+    AccountingEntityManagerService,
+    ProductserviceService
   ],
   bootstrap: [AppComponent]
 })
