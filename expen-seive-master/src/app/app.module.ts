@@ -43,8 +43,9 @@ import { ViewAccountingEntityComponent } from './account-entity/view-accounting-
 import { BalancesheetComponent } from './balancesheet/balancesheet.component';
 import { AccountingEntityManagerService } from './account-entity/view-accounting-entity/accounting-entity-manager.service';
 import { HttpClientModule } from '@angular/common/http';
+import { GetcompanyProtypeService } from './product/add-product/getcompany-protype.service';
 import { ProductserviceService } from './product/view-products/productservice.service';
-
+import { GetaccountgrpService } from './account-entity/add-accounting-entity/getaccountgrp.service';
 
 @NgModule({
   declarations: [
@@ -93,7 +94,9 @@ import { ProductserviceService } from './product/view-products/productservice.se
     AppSettings,
     LoginGuard,
     AccountingEntityManagerService,
-    ProductserviceService
+    ProductserviceService,
+    GetaccountgrpService,
+    GetcompanyProtypeService
   ],
   bootstrap: [AppComponent]
 })

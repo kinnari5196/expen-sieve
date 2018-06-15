@@ -8,6 +8,7 @@ import 'rxjs/Rx';
 export class AccountingEntityManagerService {
   private url: string = "http://localhost:3000/acmaster/";
   private url1: string = "http://localhost:3000/acentity/";
+  private url2: string = "http://localhost:3000/acentityadd/";
   
   constructor(public _http: HttpClient) { }
  content: string = "Content-Type";
@@ -26,5 +27,11 @@ export class AccountingEntityManagerService {
   deleteEntity(id:number){
     return this._http.delete(this.url1+id,{headers:new HttpHeaders().set(this.content,this.header)});
   }
+  addCustomer_seller(item) {
+    
+    let body = JSON.stringify(item);
+    return this._http.post(this.url2, body, { headers: new HttpHeaders().set(this.content, this.header) });
+}
+
   
 }

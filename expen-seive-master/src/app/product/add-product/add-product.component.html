@@ -4,12 +4,12 @@
       <div class="col-md-12">
         <div class="card">
           <div class="content">
-            <form #productForm="ngForm" (ngSubmit)="submit(productForm)">
+            <form #productForm="ngForm" (ngSubmit)="onAdd()">
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
                     <label>Product Name</label>
-                    <input required [(ngModel)]="pname" name="ProductName" type="text" class="form-control" placeholder="Name" value="">
+                    <input required [(ngModel)]="product_name" name="product_name" type="text" class="form-control" placeholder="Name" value="">
                   </div>
                 </div>
               </div>
@@ -27,7 +27,7 @@
                 <div class="col-md-3">
                   <div class="form-group">
                     <label>Company</label>
-                    <ng-select2
+                   <!-- <ng-select2
                       required  
                       ngModel 
                       name="companyName" 
@@ -37,13 +37,22 @@
                       [width]="240" id="company" 
                       style="width:100% !important"
                       (valueChanged)="companyValueChanged($event)">
-                    </ng-select2>
+                    </ng-select2>-->
+                    <div class="input-group">
+                                   
+                      <!--<input type="number" name="fk_rest_id" [(ngModel)]="fk_rest_id" />-->
+                      <select class="form-control" id="fk_company_id" 
+                    [(ngModel)]="fk_company_id" name="fk_company_id"
+                    required style="width:190%;">
+                    <option *ngFor="let s of company" [value]="s.company_id">{{s.name}}</option>
+                    </select> 
+                    </div>
                   </div>
                 </div>
                 <div class="col-md-3">
                   <div class="form-group">
                     <label>Product Type</label>
-                    <ng-select2
+                  <!--  <ng-select2
                       required
                       ngModel 
                       name="productType" 
@@ -54,10 +63,22 @@
                       id="company"
                       style="width:100% !important"
                       (valueChanged)="companyValueChanged($event)" >
-                    </ng-select2>
+                    </ng-select2>-->
+                    <div class="input-group">
+                                   
+                      <!--<input type="number" name="fk_rest_id" [(ngModel)]="fk_rest_id" />-->
+                      <select class="form-control" id="fk_product_type_id" 
+                    [(ngModel)]="fk_product_type_id" name="fk_product_type_id"
+                    required style="width:125%;">
+                    <option *ngFor="let s1 of protype" [value]="s1.product_type_id">{{s1.description}}</option>
+                    </select> 
+                    </div>
                   </div>
                 </div>
               </div>
+             
+
+             
 
               <div class="row">
                 <div class="col-md-3">
@@ -70,7 +91,7 @@
                 <div class="col-md-3">
                     <div class="form-group">
                       <label>Re-Order Level</label>
-                      <input required [(ngModel)]="reorderLvl" name="reorderLevel" type="text" class="form-control" placeholder="Value">
+                      <input required [(ngModel)]="reorder_level" name="reorder_level" type="text" class="form-control" placeholder="Value">
                     </div>
                   </div>
               </div>

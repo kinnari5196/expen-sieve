@@ -5,7 +5,7 @@ var Ac_master={
  
 getAllMaster:function(callback){
  
-return db.query("Select master.*,entity.*,grp.*,bi.* from ac_master as master,ac_entity as entity,ac_group as grp,business_info as bi where master.fk_entity_id=entity.entity_id and master.fk_group_id=grp.group_id and master.fk_business_id=bi.business_id",callback);
+return db.query("Select master.*,entity.*,grp.*,bi.* from ac_master as master,ac_entity as entity,ac_group as grp,business_info as bi where master.fk_entity_id=entity.entity_id and master.fk_group_id=grp.group_id and master.fk_business_id=bi.business_id",callback); 
  
 },
 
