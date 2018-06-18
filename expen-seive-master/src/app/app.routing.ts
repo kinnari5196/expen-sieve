@@ -22,6 +22,8 @@ import { AddBankComponent } from './Bank/add-bank/add-bank.component';
 import { AccountingEntityManagerComponent } from './account-entity/accounting-entity-manager/accounting-entity-manager.component';
 import { BalancesheetComponent } from './balancesheet/balancesheet.component';
 import { ViewProductsComponent } from './product/view-products/view-products.component'
+import { EditProductComponent } from './product/edit-product/edit-product.component';
+
 
 const routes: Routes =[
     { path: 'login',      component: LoginComponent},      
@@ -39,8 +41,10 @@ const routes: Routes =[
     { path: 'add-accounting-entity/:entity-id',      component: AddAccountingEntityComponent,  canActivate: [LoginGuard]},
     { path: 'add-accounting-entity',      component: AddAccountingEntityComponent,  canActivate: [LoginGuard]},
     { path: 'add-product-type',      component: AddProductTypeComponent,  canActivate: [LoginGuard]},
+    {path:'add-product/:product_id', component:AddProductComponent, canActivate: [LoginGuard]},
     { path: 'product-manager',      component: ProductManagerComponent,  canActivate: [LoginGuard]},
     { path: 'view-product',      component: ViewProductsComponent,  canActivate: [LoginGuard]},
+    { path: 'edit-product/:product_id',      component:EditProductComponent ,  canActivate: [LoginGuard]},
     { path: 'voucher-manager',      component: VoucherManagerComponent,  canActivate: [LoginGuard]},   
     { path: 'bank-manager',      component: BankManagerComponent,  canActivate: [LoginGuard]},
     { path: 'add-bank/:bank-acNo',      component: AddBankComponent,  canActivate: [LoginGuard]}, 

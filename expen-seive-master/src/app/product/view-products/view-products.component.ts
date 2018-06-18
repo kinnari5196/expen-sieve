@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataTableResource } from 'angular-4-data-table-bootstrap-4';
 import { product } from './product_class';
+import { Addproduct} from '../add-product/product_class'
 import { ProductserviceService } from './productservice.service';
 import { Router } from '@angular/router';
 
@@ -58,11 +59,11 @@ export class ViewProductsComponent implements OnInit {
       this.initializeTable(filteredProducts);
   }
 
-  /*editProduct(prodId: number){
-    this.router.navigate(['/add-product',prodId]);
+  updateProduct(item:product){
+    this.router.navigate(['/edit-product',item.product_id]);
   }
 
-  deleteProduct(id: number){
+  /*deleteProduct(id: number){
     this.service.deleteProduct(JSON.stringify({'id':id}))
     .subscribe((data) => {
       console.log(data);
@@ -80,4 +81,17 @@ export class ViewProductsComponent implements OnInit {
       }
     });
   }*/
+
+  deleteProduct(item){
+
+  this.data1.deleteProduct(item.product_id).subscribe(
+    ()=>{
+      this.products.splice(this.products.indexOf(item),1);
+     
+      
+    }
+  );
+}
+
+
 }

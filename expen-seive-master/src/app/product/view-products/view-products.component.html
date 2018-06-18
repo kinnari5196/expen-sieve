@@ -48,7 +48,7 @@
 
           <data-table-column
             [header]="'Type'"
-            [property]="'description'"
+            [property]="'product_type_description'"
             [sortable]="true"
             [resizable]="true"
           >
@@ -89,7 +89,7 @@
           >
             <ng-template #dataTableCell let-item="item">
               <a 
-                (click)="editProduct(item.product_id)">
+                (click)="updateProduct(item)">
                 <i class="fa fa-pencil" aria-hidden="true"></i>
               </a>
               &nbsp;
@@ -97,7 +97,7 @@
                 rel="tooltip" 
                 title="Remove" 
                 style="color: #EE2D20;"
-                (click)="deleteProduct(item.product_id)">
+                (click)="deleteProduct(item)">
                   <i class="fa fa-times"></i>
               </a>
             </ng-template>

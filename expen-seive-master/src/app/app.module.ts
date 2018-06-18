@@ -46,6 +46,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { GetcompanyProtypeService } from './product/add-product/getcompany-protype.service';
 import { ProductserviceService } from './product/view-products/productservice.service';
 import { GetaccountgrpService } from './account-entity/add-accounting-entity/getaccountgrp.service';
+import { EditProductComponent } from './product/edit-product/edit-product.component';
 
 @NgModule({
   declarations: [
@@ -73,7 +74,8 @@ import { GetaccountgrpService } from './account-entity/add-accounting-entity/get
     ViewBankComponent,
     AccountingEntityManagerComponent,
     ViewAccountingEntityComponent,
-    BalancesheetComponent
+    BalancesheetComponent,
+    EditProductComponent
   ],
   imports: [
     BrowserModule,
