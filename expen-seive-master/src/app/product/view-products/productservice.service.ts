@@ -10,7 +10,7 @@ export class ProductserviceService {
 
  private url: string = "http://localhost:3000/product/";
 private url1: string = "http://localhost:3000/deleteproduct/"
-//private url2: string= "http://localhost:3000/product/";
+ private url2: string= "http://localhost:3000/producttype/";
   constructor(public _http: HttpClient) { }
 
   content: string = "Content-Type";
@@ -40,6 +40,12 @@ private url1: string = "http://localhost:3000/deleteproduct/"
     
     let body = JSON.stringify(item);
     return this._http.post(this.url, body, { headers: new HttpHeaders().set(this.content, this.header) });
+}
+
+addProducttype(item)
+{
+  let body = JSON.stringify(item);
+    return this._http.post(this.url2, body, { headers: new HttpHeaders().set(this.content, this.header) });
 }
 
 }

@@ -53,7 +53,7 @@ export class ViewProductsComponent implements OnInit {
 
   filter(query: string){
     let filteredProducts = (query) ?
-      this.products.filter(p => p.name.toLowerCase().includes(query.toLowerCase())) : 
+      this.products.filter(p => p.product_name.toLowerCase().includes(query.toLowerCase())) : 
       this.products;
 
       this.initializeTable(filteredProducts);
@@ -88,7 +88,7 @@ export class ViewProductsComponent implements OnInit {
     ()=>{
       this.products.splice(this.products.indexOf(item),1);
      
-      
+      //this.router.navigate(['/view-product']);
     }
   );
 }

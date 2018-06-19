@@ -1,8 +1,9 @@
+import { CustomerSeller } from './../../models/customer-seller';
 import { Component, OnInit } from '@angular/core';
 import { DataTableResource } from 'angular-4-data-table-bootstrap-4';
 import { Router } from '@angular/router';
-import { BackEndCalls } from '../../services/backendcalls.service';
-import { CustomerSeller } from '../../models/customer-seller';
+import { customer } from './customer_class';
+import { ViewCustomerServiceService } from './view-customer-service.service';
 
 @Component({
   selector: 'view-customers',
@@ -11,70 +12,31 @@ import { CustomerSeller } from '../../models/customer-seller';
 })
 export class ViewCustomersComponent implements OnInit {
 
-  c: CustomerSeller[] = [
-    {
-      id: 1,
-      name: 'Mr. Honey Singh',
-      phone1: '6541238765',
-      phone2: '8888888888',
-      address: 'Chor Gali',
-      area: 'lol',
-      city: 'Ajmer',
-      state: 'Rajasthan',
-      pincode: '987654',
-      gstNo: 'asd1500',
-      currentBalance: 500
-    },
-    {
-      id: 2,
-      name: 'Mr. Badshah',
-      phone1: '6541238765',
-      phone2: '8888888888',
-      address: 'Chor Gali',
-      area: 'lol',
-      city: 'Ajmer',
-      state: 'Gujarat',
-      pincode: '987654',
-      gstNo: 'asd1500',
-      currentBalance: 2000
-    },
-    {
-      id: 3,
-      name: 'Mr. Eminem',
-      phone1: '6541238765',
-      phone2: '8888888888',
-      address: 'Chor Gali',
-      area: 'lol',
-      city: 'Ajmer',
-      state: 'Rajasthan',
-      pincode: '987654',
-      gstNo: 'asd1500',
-      currentBalance: 186500
-    }
-  ];
 
-  customers: CustomerSeller[] = [];  //Complete list of Customers
-  items: CustomerSeller[] = [];     ///list of Customers only in current page
+  customers: customer[] = [];  //Complete list of products
+  items:customer[] = [];     ///list of products only in current page
   itemCount: number;
-  tableResourse: DataTableResource<CustomerSeller>;
+  tableResourse: DataTableResource<customer>;
 
-  constructor(private router: Router, private service: BackEndCalls) { }
+
+  constructor(private router: Router, private data1: ViewCustomerServiceService) { }
 
   ngOnInit() {
   
-    this.service.getAllCustomers()
-      .subscribe(response => {
-        console.log('idhar aya');
-        console.log(response.json().customers);
-        this.customers = response.json().customers;
-        this.initializeTable(this.customers);
-    });
-    // console.log(this.customers);
-    // this.customers = this.c;
-    // this.initializeTable(this.customers);
+    this.data1.getAllCustomer_seller().subscribe(
+
+      (data:any)=>{
+        this.customers=data;
+        console.log(this.customers); 
+    //this.accounts = this.allEntity;
+    this.initializeTable(this.customers);
+    console.log(this.customers);
+      }
+);
+
   }
 
-  private initializeTable(customers: CustomerSeller[]){
+  private initializeTable(customers: customer[]){
     this.tableResourse = new DataTableResource(customers);
     this.tableResourse.query({offset: 0})
       .then(items => this.items = items);
@@ -98,7 +60,7 @@ export class ViewCustomersComponent implements OnInit {
       this.initializeTable(filteredCustomers);
   }
 
-  editCustomer(id: number){
+/*  editCustomer(id: number){
     this.router.navigate(['/add-customer','c',id]);
   }
 
@@ -119,7 +81,7 @@ export class ViewCustomersComponent implements OnInit {
          this.customers.splice(index,1);
       }
     });
-  }
+  }*/
 
 }
 

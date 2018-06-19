@@ -47,6 +47,10 @@ import { GetcompanyProtypeService } from './product/add-product/getcompany-proty
 import { ProductserviceService } from './product/view-products/productservice.service';
 import { GetaccountgrpService } from './account-entity/add-accounting-entity/getaccountgrp.service';
 import { EditProductComponent } from './product/edit-product/edit-product.component';
+import { AddprotypeService } from './product/add-product-type/addprotype.service';
+import { EditAccountingEntityComponent } from './account-entity/edit-accounting-entity/edit-accounting-entity.component';
+import { ViewCustomerServiceService } from './customer/view-customers/view-customer-service.service';
+
 
 @NgModule({
   declarations: [
@@ -75,7 +79,8 @@ import { EditProductComponent } from './product/edit-product/edit-product.compon
     AccountingEntityManagerComponent,
     ViewAccountingEntityComponent,
     BalancesheetComponent,
-    EditProductComponent
+    EditProductComponent,
+    EditAccountingEntityComponent
   ],
   imports: [
     BrowserModule,
@@ -98,7 +103,9 @@ import { EditProductComponent } from './product/edit-product/edit-product.compon
     AccountingEntityManagerService,
     ProductserviceService,
     GetaccountgrpService,
-    GetcompanyProtypeService
+    GetcompanyProtypeService,
+    AddprotypeService,
+    ViewCustomerServiceService
   ],
   bootstrap: [AppComponent]
 })
