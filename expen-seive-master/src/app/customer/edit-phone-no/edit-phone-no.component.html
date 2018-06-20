@@ -1,0 +1,36 @@
+<div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="header">
+          <h4 class="title">Edit phone no</h4>
+        </div>
+        <div class="content">
+          <form #addCustomerForm="ngForm" (ngSubmit)="onUpdate()">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                      <label>Phone Number 1</label>
+                      <input [(ngModel)]="phone_no1" name="phoneNumberOne" type="text" class="form-control" placeholder="Phone 1" value="">
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                      <div class="form-group">
+                        <label>Phone Number 2</label>
+                        <input [(ngModel)]="phone_no2" name="phoneNumberTwo" type="text" class="form-control" placeholder="Phone 2" value="">
+                      </div>
+                    </div>
+
+
+</div>
+<div class="row">
+    <div class="col-md-9">
+      <button style="padding-right: 50px" type="submit" class="col-md-1 btn btn-default   btn-fill pull-right">Update</button>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+</form>
+             
+                </div>
+              </div>
+      </div>
+      </div>

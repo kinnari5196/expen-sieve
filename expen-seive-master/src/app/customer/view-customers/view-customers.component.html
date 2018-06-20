@@ -45,7 +45,8 @@
               [resizable]="true"
             >
             <ng-template #dataTableCell let-item="item">
-              {{item.phone_no1 + ', ' + item.phone_no2}}
+           <a   (click)="updatePhoneno(item)" >
+              {{item.phone_no1 + ', ' + item.phone_no2}}</a>
             </ng-template>
             </data-table-column>
   

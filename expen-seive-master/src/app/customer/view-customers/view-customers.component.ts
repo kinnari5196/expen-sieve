@@ -1,4 +1,4 @@
-import { CustomerSeller } from './../../models/customer-seller';
+import { LegendItem } from './../../lbd/lbd-chart/lbd-chart.component';
 import { Component, OnInit } from '@angular/core';
 import { DataTableResource } from 'angular-4-data-table-bootstrap-4';
 import { Router } from '@angular/router';
@@ -58,6 +58,12 @@ export class ViewCustomersComponent implements OnInit {
       this.customers;
 
       this.initializeTable(filteredCustomers);
+  }
+
+  updatePhoneno(item)
+  {
+    this.router.navigate(['/edit-phoneNo',item.fk_phone_id]);
+
   }
 
 /*  editCustomer(id: number){

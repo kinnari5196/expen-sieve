@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { AddProductComponent } from './product/add-product/add-product.component';
 import { AddCustomerComponent } from './customer/add-customer/add-customer.component';
+import { AddSellerComponent } from './customer/add-seller/add-seller.component';
 import { AddVoucherComponent } from './voucher/add-voucher/add-voucher.component';
 import { InvoiceComponent } from './invoice/invoice.component';
 import { LoginComponent } from './login/login.component';
@@ -23,7 +24,7 @@ import { AccountingEntityManagerComponent } from './account-entity/accounting-en
 import { BalancesheetComponent } from './balancesheet/balancesheet.component';
 import { ViewProductsComponent } from './product/view-products/view-products.component'
 import { EditProductComponent } from './product/edit-product/edit-product.component';
-
+import { EditPhoneNoComponent } from './customer/edit-phone-no/edit-phone-no.component';
 
 const routes: Routes =[
     { path: 'login',      component: LoginComponent},      
@@ -31,8 +32,10 @@ const routes: Routes =[
     { path: 'add-product/:product-id',      component: AddProductComponent,  canActivate: [LoginGuard] },
     { path: 'add-product',      component: AddProductComponent,  canActivate: [LoginGuard] },
     { path: 'customer-manager',      component: CustomerManagerComponent,  canActivate: [LoginGuard] },
+    { path: 'edit-phoneNo/:phone_id',      component: EditPhoneNoComponent,  canActivate: [LoginGuard] },
     { path: 'add-customer/:type/:customer-seller-id',      component: AddCustomerComponent,  canActivate: [LoginGuard] },    
     { path: 'add-customer',      component: AddCustomerComponent,  canActivate: [LoginGuard] },
+    { path: 'add-seller',      component:AddSellerComponent,  canActivate: [LoginGuard] },
     { path: 'add-voucher',      component: AddVoucherComponent,  canActivate: [LoginGuard] },
     { path: 'add-invoice/:invoice-id',      component: InvoiceComponent,  canActivate: [LoginGuard] },
     { path: 'invoice-manager',      component: InvoiceManagerComponent,  canActivate: [LoginGuard]},

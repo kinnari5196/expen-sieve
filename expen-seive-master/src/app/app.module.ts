@@ -53,8 +53,9 @@ import { ViewCustomerServiceService } from './customer/view-customers/view-custo
 import { ViewSellerServiceService } from './customer/view-sellers/view-seller-service.service';
 import { GetPincodeService } from './customer/add-customer/get-pincode.service';
 import { BankServiceService } from './Bank/view-bank/bank-service.service';
-
-
+import { AddSellerComponent } from './customer/add-seller/add-seller.component';
+import { EditPhoneNoComponent } from './customer/edit-phone-no/edit-phone-no.component';
+import { EditPhoneNoserviceService } from './customer/edit-phone-no/edit-phone-noservice.service'
 
 @NgModule({
   declarations: [
@@ -84,7 +85,9 @@ import { BankServiceService } from './Bank/view-bank/bank-service.service';
     ViewAccountingEntityComponent,
     BalancesheetComponent,
     EditProductComponent,
-    EditAccountingEntityComponent
+    EditAccountingEntityComponent,
+    AddSellerComponent,
+    EditPhoneNoComponent
   ],
   imports: [
     BrowserModule,
@@ -112,7 +115,8 @@ import { BankServiceService } from './Bank/view-bank/bank-service.service';
     ViewCustomerServiceService,
     ViewSellerServiceService,
     GetPincodeService,
-    BankServiceService
+    BankServiceService,
+    EditPhoneNoserviceService
   ],
   bootstrap: [AppComponent]
 })

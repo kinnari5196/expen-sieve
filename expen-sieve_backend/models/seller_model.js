@@ -7,7 +7,7 @@ var Customer_seller={
  
 getAllCustomer_seller:function(callback){
  
-return db.query("select cs.*,pin.*,phn.*,bi.*,c.*,s.* from seller as cs,address as pin,phone_no as phn,business_info as bi,city as c,state as s  where cs.fk_pincode=pin.pincode and cs.fk_phone_id=phn.phone_id and cs.fk_business_id=bi.business_id and cs.isactive=0 and phn.isactive=0 and pin.fk_city_id=c.city_id and c.fk_state_id=s.state_id",callback);
+return db.query("select cs.*,pin.*,phn.*,bi.*,c.*,s.* from seller as cs,address as pin,phone_no as phn,business_info as bi,city as c,state as s  where cs.fk_pincode=pin.pincode and cs.fk_phone_id=phn.phone_id and cs.fk_business_id=bi.business_id and cs.isactive=0 and phn.isactive=0 and pin.fk_city_id=c.city_id and c.fk_state_id=s.state_id ",callback);
  
 },
 

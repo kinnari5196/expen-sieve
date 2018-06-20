@@ -89,7 +89,7 @@ this.data1.getAllProducttype().subscribe(
     let driver=new Addproduct(null,this.fk_product_type_id,this.product_name,this.hsncode,this.fk_company_id,this.price,this.stock,this.reorder_level,this.fk_business_id);
     this.data.updateProduct(this.product_id,driver).subscribe(
       ()=>{
-        this._router.navigate(['/view-product']);
+        this._router.navigate(['/customer-manager']);
        
       }
     );

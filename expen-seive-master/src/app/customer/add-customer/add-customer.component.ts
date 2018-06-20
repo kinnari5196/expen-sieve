@@ -35,7 +35,7 @@ export class AddCustomerComponent implements OnInit {
   date_since:string;
   amount:number;
   phone_no1:string;
-  phone_no2:string
+  phone_no2:string;
 
   ngOnInit() {
     
