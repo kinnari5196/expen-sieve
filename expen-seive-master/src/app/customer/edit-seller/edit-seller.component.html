@@ -1,0 +1,103 @@
+
+<!-- <div class="main-content">
+  <div class="container-fluid"> -->
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="header">
+            <h4 class="title">Edit Seller</h4>
+          </div>
+          <div class="content">
+            <form #addSellerForm="ngForm" (ngSubmit)="onUpdate()">
+              <div class="row">
+                <!--customer/seller-->
+
+                <!--<div class="col-md-3">
+                  <div class="form-group">
+                    <label>Select</label>
+                    <br/>
+                    <input required [(ngModel)]="type" type="radio" name="optionsRadios" data-toggle="radio" id="optionsRadios1" value="s"> Seller &nbsp; &nbsp;
+                    <input required [(ngModel)]="type" type="radio" name="optionsRadios" data-toggle="radio" id="optionsRadios2" value="c"> Customer
+                  </div>
+                </div>-->
+              </div>
+              <div class="row">
+                <div class="col-md-5">
+                  <div class="form-group">
+                    <label>Name *</label>
+
+                    <input required [(ngModel)]="name" name="customerName" list="customerSellerNames" class="form-control" placeholder="Customer/Company Name..." autocomplete="off">
+
+                   <datalist id="customerSellerNames">
+                      <option *ngFor="let item of customerSeller;" value={{item}}>
+                    </datalist>
+                  </div>
+                </div>
+
+                <!-- <div class="col-md-3">
+                                    <div class="form-group">
+                                       <label>Username</label>
+                                        <input type="text" class="form-control" placeholder="Username" value="michael23">
+                                    </div>
+                                </div>-->
+                
+              </div>
+
+              <div class="row">
+              
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label>GST No.</label>
+                    <input [(ngModel)]="gst_no" name="gst_no" type="text" class="form-control" placeholder="GST No...">
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-9">
+                  <div class="form-group">
+                    <label>Address</label>
+                    <input [(ngModel)]="addressline" name="customerAddress" type="text" class="form-control" placeholder="Customer/Company Address">
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+               
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Pincode</label>
+                        <br>
+                       <!-- <ng-select2 ngModel
+                            name="pincodes" 
+                            [data]="pincodes" 
+                            [options]="options" 
+                            [width]="230" 
+                            id="acGroup" 
+                            style="width:100% !important">
+                        </ng-select2>-->
+
+                        <!--<select class="form-control" id="id" 
+                    [(ngModel)]="fk_pincode" name="fk_pincode"
+                    required style="width:125%;">
+                    <option *ngFor="let s1 of pincode" [value]="s1.id">{{s1.pincode}}</option>
+                    </select>-->
+                  <input [(ngModel)]="fk_pincode" name="phoneNumberTwo" type="number" class="form-control" placeholder="Phone 2" value="">
+                    </div> 
+                </div>
+              </div>
+
+
+              <div class="row">
+                <div class="col-md-9">
+                  <button style="padding-right: 50px" type="submit" class="col-md-1 btn btn-default   btn-fill pull-right">Update</button>
+                </div>
+              </div>
+              <div class="clearfix"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  <!-- </div>
+</div> -->

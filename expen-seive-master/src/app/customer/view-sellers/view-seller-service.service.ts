@@ -1,3 +1,4 @@
+import { edit_seller } from './../edit-seller/edit-seller-class';
 import { seller } from './seller_class';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -26,5 +27,17 @@ export class ViewSellerServiceService {
     let body = JSON.stringify(item);
     return this._http.post(this.url1, body, { headers: new HttpHeaders().set(this.content, this.header) });
 }
+
+updateCustomer_seller(id, item) {
+    
+  let body = JSON.stringify(item);
+  return this._http.put(this.url + id, body, { headers: new HttpHeaders().set(this.content, this.header) });
+
+  }
+  
+  getCustomer_sellerbyid(id:number)
+  {
+    return this._http.get<edit_seller[]>(this.url+id);
+  }
 
 }

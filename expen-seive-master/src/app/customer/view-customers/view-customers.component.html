@@ -47,7 +47,7 @@
             <ng-template #dataTableCell let-item="item">
            <a   (click)="updatePhoneno(item)" >
               {{item.phone_no1 + ', ' + item.phone_no2}}</a>
-            </ng-template>
+            </ng-template> 
             </data-table-column>
   
             <data-table-column
@@ -74,7 +74,7 @@
             >
               <ng-template #dataTableCell let-item="item">
                 <a 
-                  (click)="editCustomer(item.id)">
+                  (click)="updateCustomer_seller(item)">
                   <i class="fa fa-pencil" aria-hidden="true"></i>
                 </a>
                 &nbsp;

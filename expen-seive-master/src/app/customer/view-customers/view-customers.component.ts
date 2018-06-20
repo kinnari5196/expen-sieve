@@ -66,6 +66,10 @@ export class ViewCustomersComponent implements OnInit {
 
   }
 
+  updateCustomer_seller(item){
+    this.router.navigate(['/edit-customer',item.cs_id]);
+  }
+
 /*  editCustomer(id: number){
     this.router.navigate(['/add-customer','c',id]);
   }

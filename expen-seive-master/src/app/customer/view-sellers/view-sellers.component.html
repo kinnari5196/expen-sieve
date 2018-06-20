@@ -45,9 +45,10 @@
               [resizable]="true"
             >
             <ng-template #dataTableCell let-item="item">
-              {{item.phone_no1 + ', ' + item.phone_no2}}
-            </ng-template>
-            </data-table-column>
+              <a   (click)="updatePhoneno(item)" >
+                 {{item.phone_no1 + ', ' + item.phone_no2}}</a>
+               </ng-template> 
+               </data-table-column>
   
             <data-table-column
               [header]="'Address'"
@@ -73,7 +74,7 @@
             >
               <ng-template #dataTableCell let-item="item">
                 <a 
-                  (click)="editSellers(item.id)">
+                  (click)="updateCustomer_seller(item)">
                   <i class="fa fa-pencil" aria-hidden="true"></i>
                 </a>
                 &nbsp;

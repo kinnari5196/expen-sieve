@@ -56,7 +56,11 @@ export class ViewSellersComponent implements OnInit {
 
       this.initializeTable(filteredSellers);
   }
+  updateCustomer_seller(item)
+  {
+    this.router.navigate(['/edit-seller',item.seller_id]);
 
+  }
   /*editSellers(id: number){
     this.router.navigate(['/add-customer','s',id]);
   }

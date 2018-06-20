@@ -25,7 +25,8 @@ import { BalancesheetComponent } from './balancesheet/balancesheet.component';
 import { ViewProductsComponent } from './product/view-products/view-products.component'
 import { EditProductComponent } from './product/edit-product/edit-product.component';
 import { EditPhoneNoComponent } from './customer/edit-phone-no/edit-phone-no.component';
-
+import { EditCustomerComponent } from './customer/edit-customer/edit-customer.component'
+import { EditSellerComponent } from './customer/edit-seller/edit-seller.component';
 const routes: Routes =[
     { path: 'login',      component: LoginComponent},      
     { path: 'dashboard',      component: HomeComponent,  canActivate: [LoginGuard]},
@@ -33,6 +34,8 @@ const routes: Routes =[
     { path: 'add-product',      component: AddProductComponent,  canActivate: [LoginGuard] },
     { path: 'customer-manager',      component: CustomerManagerComponent,  canActivate: [LoginGuard] },
     { path: 'edit-phoneNo/:phone_id',      component: EditPhoneNoComponent,  canActivate: [LoginGuard] },
+    { path: 'edit-customer/:cs_id',      component: EditCustomerComponent,  canActivate: [LoginGuard] },
+    { path: 'edit-seller/:seller_id',      component: EditSellerComponent,  canActivate: [LoginGuard] },
     { path: 'add-customer/:type/:customer-seller-id',      component: AddCustomerComponent,  canActivate: [LoginGuard] },    
     { path: 'add-customer',      component: AddCustomerComponent,  canActivate: [LoginGuard] },
     { path: 'add-seller',      component:AddSellerComponent,  canActivate: [LoginGuard] },

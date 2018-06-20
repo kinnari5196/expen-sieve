@@ -55,7 +55,9 @@ import { GetPincodeService } from './customer/add-customer/get-pincode.service';
 import { BankServiceService } from './Bank/view-bank/bank-service.service';
 import { AddSellerComponent } from './customer/add-seller/add-seller.component';
 import { EditPhoneNoComponent } from './customer/edit-phone-no/edit-phone-no.component';
-import { EditPhoneNoserviceService } from './customer/edit-phone-no/edit-phone-noservice.service'
+import { EditPhoneNoserviceService } from './customer/edit-phone-no/edit-phone-noservice.service';
+import { EditCustomerComponent } from './customer/edit-customer/edit-customer.component';
+import { EditSellerComponent } from './customer/edit-seller/edit-seller.component'
 
 @NgModule({
   declarations: [
@@ -87,7 +89,9 @@ import { EditPhoneNoserviceService } from './customer/edit-phone-no/edit-phone-n
     EditProductComponent,
     EditAccountingEntityComponent,
     AddSellerComponent,
-    EditPhoneNoComponent
+    EditPhoneNoComponent,
+    EditCustomerComponent,
+    EditSellerComponent
   ],
   imports: [
     BrowserModule,
