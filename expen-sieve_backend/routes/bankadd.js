@@ -5,7 +5,7 @@ var express = require('express');
 
 router.post('/',function(req,res,next){
 
-User.addCustomer_seller(req.body,function(err,count){
+User.addBank(req.body,function(err,count){
 
 if(err){
 

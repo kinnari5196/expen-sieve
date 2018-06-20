@@ -1,9 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Bank } from '../../models/bank';
 import { NgForm } from '@angular/forms';
-import { BackEndCalls } from '../../services/backendcalls.service';
-import { ActivatedRoute } from '@angular/router';
+import { Router,ActivatedRoute } from '@angular/router';
 import { Select2OptionData } from 'ng-select2/ng-select2/ng-select2.interface';
+import { add_bank_class } from './add_bank_class';
+import { getPincodeDropdown } from './get_pincode_class';
+import { BankServiceService } from '../view-bank/bank-service.service';
+import { GetPincodeService1 } from './get-pincode.service';
+import { Subscription } from 'rxjs/Rx';
+
 
 @Component({
   selector: 'add-bank',
@@ -12,50 +17,56 @@ import { Select2OptionData } from 'ng-select2/ng-select2/ng-select2.interface';
 })
 export class AddBankComponent implements OnInit {
 
-  isEditPage: boolean = false;
-  bank: Bank = {} as Bank;
-  public pincodes: Array<Select2OptionData>;
-  public options: Select2Options;
+  pincode:getPincodeDropdown[]=[];
+  public companies: Array<Select2OptionData>;
+  public productTypes: Array<Select2OptionData>;
+  public options: Select2OptionData;
 
-  constructor(private service: BackEndCalls, private route: ActivatedRoute) { }
+  constructor(private data1:GetPincodeService1, private data2:BankServiceService, public _router: Router,public _acrouter:ActivatedRoute) { }
+
+  bank_id:number;
+  account_no:number;
+  fk_pincode:number;
+  name:string;
+  bsrcode:string;
+  addressline:string;
+  gst_no:string;
+  date_since:string;
+  amount:number;
+  
 
   ngOnInit() {
-    this.route.paramMap
-      .subscribe(params => {
-        this.bank.acNo = Number(params.get('bank-acNo'));
-    });
 
-    if(this.bank.acNo)
-      this.isEditPage = true;
+    /*this.data1.getAllAdress().subscribe(
 
-    this.service.getPinCodes()
-      .subscribe(response => {
-        this.pincodes = response.json().pincode;
-        this.options = {
-          allowClear: true
-        }
-    });
-
-    if(this.isEditPage){
-      console.log('loooool');
-      this.service.getSingleBank(JSON.stringify({'accountNo':this.bank.acNo}))
-        .subscribe((data) => {
-          console.log(data.json());
-          let b = data.json().bank[0];
-          
-          this.bank.name = b.name;
-          this.bank.acNo = b.acNo;
-          this.bank.gstNo = b.gstNo;
-          this.bank.dateSince = b.dateSince;
-          this.bank.bsrCode = b.bsrCode;
-          this.bank.pincode = b.pincode;
-          this.bank.address = b.address;
-          this.bank.balance = b.balance;
-        });
-    }
+      (data:any)=>{
+        this.pincode=data;
+        console.log(this.pincode);
+      }
+  );*/
+    
   }
 
-  submit(form: NgForm) {
+  onAdd() {
+  
+    this.data2.addBank(new add_bank_class(this.bank_id,this.account_no,this.fk_pincode,this.name,this.bsrcode,this.addressline,this.gst_no,this.date_since,this.amount)).subscribe(
+      (data:any)=>{
+      alert('added');
+      console.log(this.name);
+        this._router.navigate(['/bank-manager']);
+      },
+      function(error)
+      {
+        console.log(error);
+      },
+      function()
+      {
+        console.log("book add");
+      }
+    );
+      }
+
+ /*submit(form: NgForm) {
     if(form.valid == false)
       this.notification.errorNotification('top', 'center');
     else
@@ -116,6 +127,6 @@ export class AddBankComponent implements OnInit {
         }
       }); 
     }
-  }
+  }*/
 
 }

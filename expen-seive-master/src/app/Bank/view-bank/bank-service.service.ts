@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { add_bank_class } from '../add-bank/add_bank_class';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-//import { Addproduct } from '../add-product/product_class';
 import { Http,Response,RequestOptions,Headers} from '@angular/http';
 import 'rxjs/Rx';
 @Injectable()

@@ -1,5 +1,4 @@
 import { ViewCustomerServiceService } from './../view-customers/view-customer-service.service';
-//import { customer } from '../view-customers/customer_class';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router,ActivatedRoute } from '@angular/router';
@@ -7,7 +6,6 @@ import { getPincodeDropdown }  from './get_pincode_class';
 import { customer } from './customer_class';
 import { add_customer_class } from './add_customer_class';
 import { Select2OptionData } from 'ng-select2/ng-select2/ng-select2.interface';
-//import { Addproduct } from './product_class';
 import { GetPincodeService } from './get-pincode.service';
 import { Subscription } from 'rxjs/Rx';
 

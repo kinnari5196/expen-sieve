@@ -53,7 +53,7 @@ const routes: Routes =[
     { path: 'edit-product/:product_id',      component:EditProductComponent ,  canActivate: [LoginGuard]},
     { path: 'voucher-manager',      component: VoucherManagerComponent,  canActivate: [LoginGuard]},   
     { path: 'bank-manager',      component: BankManagerComponent,  canActivate: [LoginGuard]},
-    { path: 'add-bank/:bank-acNo',      component: AddBankComponent,  canActivate: [LoginGuard]}, 
+    { path: 'add-bank/:bank_id',      component: AddBankComponent,  canActivate: [LoginGuard]}, 
     { path: 'add-bank',      component: AddBankComponent,  canActivate: [LoginGuard]}, 
     { path: 'balancesheet',      component: BalancesheetComponent,  canActivate: [LoginGuard]}, 
     { path: '',          redirectTo: 'dashboard', pathMatch: 'full',  canActivate: [LoginGuard] }

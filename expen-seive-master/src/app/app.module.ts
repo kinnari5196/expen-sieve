@@ -58,6 +58,8 @@ import { EditPhoneNoComponent } from './customer/edit-phone-no/edit-phone-no.com
 import { EditPhoneNoserviceService } from './customer/edit-phone-no/edit-phone-noservice.service';
 import { EditCustomerComponent } from './customer/edit-customer/edit-customer.component';
 import { EditSellerComponent } from './customer/edit-seller/edit-seller.component'
+import { GetPincodeService1 } from './Bank/add-bank/get-pincode.service';
+
 
 @NgModule({
   declarations: [
@@ -120,7 +122,8 @@ import { EditSellerComponent } from './customer/edit-seller/edit-seller.componen
     ViewSellerServiceService,
     GetPincodeService,
     BankServiceService,
-    EditPhoneNoserviceService
+    EditPhoneNoserviceService,
+    GetPincodeService1
   ],
   bootstrap: [AppComponent]
 })
