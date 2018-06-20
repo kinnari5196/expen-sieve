@@ -32,7 +32,7 @@
 
             <data-table-column
               [header]="'Gst No'"
-              [property]="'gstNo'"
+              [property]="'gst_no'"
               [sortable]="true"
               [resizable]="true"
             >
@@ -40,33 +40,33 @@
   
            <data-table-column
               [header]="'Phone Nos'"
-              [property]="'phone1'"
+              [property]="'phone_no1'"
               [sortable]="true"
               [resizable]="true"
             >
             <ng-template #dataTableCell let-item="item">
-              {{item.phone1 + ', ' + item.phone2}}
+              {{item.phone_no1 + ', ' + item.phone_no2}}
             </ng-template>
             </data-table-column>
   
             <data-table-column
               [header]="'Address'"
-              [property]="'address'"
+              [property]="'addressline'"
               [sortable]="true"
               [resizable]="true"
             >
             <ng-template #dataTableCell let-item="item">
-                {{item.address + ', ' + item.area + ', ' + item.city + ', ' + item.state + ', ' + item.pincode}}
+                {{item.addressline + ', ' + item.city_name + ', ' + item.state_name + ', ' + item.pincode}}
             </ng-template>
             </data-table-column>
   
-            <data-table-column
+           <!-- <data-table-column
               [header]="'Currect Balance'"
               [property]="'currentBalance'"
               [sortable]="true"
               [resizable]="true"
             >
-            </data-table-column>
+            </data-table-column>-->
   
             <data-table-column
               [property]="'id'"

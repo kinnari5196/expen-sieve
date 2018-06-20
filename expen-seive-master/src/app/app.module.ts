@@ -50,6 +50,10 @@ import { EditProductComponent } from './product/edit-product/edit-product.compon
 import { AddprotypeService } from './product/add-product-type/addprotype.service';
 import { EditAccountingEntityComponent } from './account-entity/edit-accounting-entity/edit-accounting-entity.component';
 import { ViewCustomerServiceService } from './customer/view-customers/view-customer-service.service';
+import { ViewSellerServiceService } from './customer/view-sellers/view-seller-service.service';
+import { GetPincodeService } from './customer/add-customer/get-pincode.service';
+import { BankServiceService } from './Bank/view-bank/bank-service.service';
+
 
 
 @NgModule({
@@ -105,7 +109,10 @@ import { ViewCustomerServiceService } from './customer/view-customers/view-custo
     GetaccountgrpService,
     GetcompanyProtypeService,
     AddprotypeService,
-    ViewCustomerServiceService
+    ViewCustomerServiceService,
+    ViewSellerServiceService,
+    GetPincodeService,
+    BankServiceService
   ],
   bootstrap: [AppComponent]
 })

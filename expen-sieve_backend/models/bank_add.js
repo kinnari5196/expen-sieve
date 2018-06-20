@@ -1,6 +1,6 @@
 var mysql = require('mysql');
  var Customer_seller={
-     addCustomer_seller:function(id,Customer_seller,callback){ 
+     addBank:function(Customer_seller,callback){ 
 var connection = mysql.createConnection(
     {
       host     : 'localhost',
@@ -21,26 +21,26 @@ connection.connect(function(err) {
 /* Begin transaction */
 connection.beginTransaction(function(err) {
   if (err) { throw err; }
-  connection.query('update bank set isactive=1 where account_no=?',[id],function(err, result) {
+  connection.query('INSERT INTO bank SET account_no=?,fk_pincode=?,name=?,bsrcode=?,addressline=?,gst_no=?', [Customer_seller.account_no,Customer_seller.fk_pincode,Customer_seller.name,Customer_seller.bsrcode,Customer_seller.addressline,Customer_seller.gst_no],function(err, result) {
     if (err) { 
       connection.rollback(function() {
         throw err;
       });
     }
  
-   // var log = result.insertId;
+    var log = result.insertId;
  
-    connection.query('update ac_master set isactive=1 where fk_entity_id=? and fk_group_id=?', [id,3], function(err, result) {
+    connection.query('INSERT INTO ac_master SET fk_entity_id=?,fk_group_id=?,date_since=?,amount=?,gst_no=?', [log,3,Customer_seller.date_since,Customer_seller.amount,Customer_seller.gst_no], function(err, result) {
       if (err) { 
         connection.rollback(function() {
           throw err;
         });
       }  
 
-      var log2 = result.insertId;
+      
+        
 
- 
-       connection.commit(function(err) {
+        connection.commit(function(err) {
         if (err) { 
           connection.rollback(function() {
             throw err;

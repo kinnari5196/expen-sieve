@@ -7,27 +7,27 @@
             <h4 class="title">Add New</h4>
           </div>
           <div class="content">
-            <form #addCustomerForm="ngForm" (ngSubmit)="addCustomer(addCustomerForm)">
+            <form #addCustomerForm="ngForm" (ngSubmit)="onAdd()">
               <div class="row">
                 <!--customer/seller-->
 
-                <div class="col-md-3">
+                <!--<div class="col-md-3">
                   <div class="form-group">
                     <label>Select</label>
                     <br/>
                     <input required [(ngModel)]="type" type="radio" name="optionsRadios" data-toggle="radio" id="optionsRadios1" value="s"> Seller &nbsp; &nbsp;
                     <input required [(ngModel)]="type" type="radio" name="optionsRadios" data-toggle="radio" id="optionsRadios2" value="c"> Customer
                   </div>
-                </div>
+                </div>-->
               </div>
               <div class="row">
                 <div class="col-md-5">
                   <div class="form-group">
                     <label>Name *</label>
 
-                    <input required [(ngModel)]="customerSellerData.name" name="customerName" list="customerSellerNames" class="form-control" placeholder="Customer/Company Name..." autocomplete="off">
+                    <input required [(ngModel)]="name" name="customerName" list="customerSellerNames" class="form-control" placeholder="Customer/Company Name..." autocomplete="off">
 
-                    <datalist id="customerSellerNames">
+                   <datalist id="customerSellerNames">
                       <option *ngFor="let item of customerSeller;" value={{item}}>
                     </datalist>
                   </div>
@@ -42,7 +42,7 @@
                 <div class="col-md-4">
                   <div class="form-group">
                     <label>Opening Bal. *</label>
-                    <input required [(ngModel)]="customerSellerData.currentBalance" name="openingBalance" type="text" class="form-control" placeholder="Rs.0000.00">
+                    <input required [(ngModel)]="amount" name="openingBalance" type="text" class="form-control" placeholder="Rs.0000.00">
                   </div>
                 </div>
               </div>
@@ -51,13 +51,13 @@
                 <div class="col-md-5">
                   <div class="form-group">
                     <label>Date(Since) *</label>
-                    <input required [(ngModel)]="date" name="dateSince" type="date" class="form-control" placeholder="" value="">
+                    <input required [(ngModel)]="date_since" name="dateSince" type="date" class="form-control" placeholder="" value="">
                   </div>
                 </div>
                 <div class="col-md-4">
                   <div class="form-group">
                     <label>GST No.</label>
-                    <input [(ngModel)]="customerSellerData.gstNo" name="gstNo" type="text" class="form-control" placeholder="GST No...">
+                    <input [(ngModel)]="gst_no" name="gst_no" type="text" class="form-control" placeholder="GST No...">
                   </div>
                 </div>
               </div>
@@ -66,7 +66,7 @@
                 <div class="col-md-9">
                   <div class="form-group">
                     <label>Address</label>
-                    <input [(ngModel)]="customerSellerData.address" name="customerAddress" type="text" class="form-control" placeholder="Customer/Company Address">
+                    <input [(ngModel)]="addressline" name="customerAddress" type="text" class="form-control" placeholder="Customer/Company Address">
                   </div>
                 </div>
               </div>
@@ -75,27 +75,34 @@
                 <div class="col-md-3">
                   <div class="form-group">
                     <label>Phone Number 1</label>
-                    <input [(ngModel)]="customerSellerData.phone1" name="phoneNumberOne" type="text" class="form-control" placeholder="Phone 1" value="">
+                    <input [(ngModel)]="phone_no1" name="phoneNumberOne" type="text" class="form-control" placeholder="Phone 1" value="">
                   </div>
                 </div>
                 <div class="col-md-3">
                   <div class="form-group">
                     <label>Phone Number 2</label>
-                    <input [(ngModel)]="customerSellerData.phone2" name="phoneNumberTwo" type="text" class="form-control" placeholder="Phone 2" value="">
+                    <input [(ngModel)]="phone_no2" name="phoneNumberTwo" type="text" class="form-control" placeholder="Phone 2" value="">
                   </div>
                 </div>
                 <div class="col-md-3">
                     <div class="form-group">
                         <label>Pincode</label>
                         <br>
-                        <ng-select2 ngModel
+                       <!-- <ng-select2 ngModel
                             name="pincodes" 
                             [data]="pincodes" 
                             [options]="options" 
                             [width]="230" 
                             id="acGroup" 
                             style="width:100% !important">
-                        </ng-select2>
+                        </ng-select2>-->
+
+                        <!--<select class="form-control" id="id" 
+                    [(ngModel)]="fk_pincode" name="fk_pincode"
+                    required style="width:125%;">
+                    <option *ngFor="let s1 of pincode" [value]="s1.id">{{s1.pincode}}</option>
+                    </select>-->
+                  <input [(ngModel)]="fk_pincode" name="phoneNumberTwo" type="number" class="form-control" placeholder="Phone 2" value="">
                     </div> 
                 </div>
               </div>

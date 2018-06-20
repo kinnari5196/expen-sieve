@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DataTableResource } from 'angular-4-data-table-bootstrap-4';
 import { Router } from '@angular/router';
-import { BackEndCalls } from '../../services/backendcalls.service';
-import { CustomerSeller } from '../../models/customer-seller';
+import { seller } from './seller_class';
+import {  ViewSellerServiceService} from './view-seller-service.service';
 
 @Component({
   selector: 'view-sellers',
@@ -11,69 +11,29 @@ import { CustomerSeller } from '../../models/customer-seller';
 })
 export class ViewSellersComponent implements OnInit {
 
-  s: CustomerSeller[] = [
-    {
-      id: 1,
-      name: 'Abc',
-      phone1: '6541238765',
-      phone2: '8888888888',
-      address: 'Chor Gali',
-      area: 'lol',
-      city: 'Ajmer',
-      state: 'Rajasthan',
-      pincode: '987654',
-      gstNo: 'asd1500',
-      currentBalance: 500
-    },
-    {
-      id: 2,
-      name: 'Def',
-      phone1: '6541238765',
-      phone2: '8888888888',
-      address: 'Chor Gali',
-      area: 'lol',
-      city: 'Ajmer',
-      state: 'Gujarat',
-      pincode: '987654',
-      gstNo: 'asd1500',
-      currentBalance: 2000
-    },
-    {
-      id: 3,
-      name: 'Ghi',
-      phone1: '6541238765',
-      phone2: '8888888888',
-      address: 'Chor Gali',
-      area: 'lol',
-      city: 'Ajmer',
-      state: 'Rajasthan',
-      pincode: '987654',
-      gstNo: 'asd1500',
-      currentBalance: 186500
-    }
-  ];
 
-  sellers: CustomerSeller[] = [];  //Complete list of Sellers
-  items: CustomerSeller[] = [];     ///list of Sellers only in current page
+  sellers: seller[] = [];  //Complete list of Sellers
+  items: seller[] = [];     ///list of Sellers only in current page
   itemCount: number;
-  tableResourse: DataTableResource<CustomerSeller>;
+  tableResourse: DataTableResource<seller>;
 
-  constructor(private router: Router, private service: BackEndCalls) { }
+  constructor(private router: Router, private data1: ViewSellerServiceService) { }
 
   ngOnInit() {
   
-    this.service.getAllSellers()
-      .subscribe(response => {
-        console.log(response.json().sellers);
-        this.sellers = response.json().sellers;
-        this.initializeTable(this.sellers);
-    });
-    // console.log(this.sellers);
-    // this.sellers = this.s;
-    // this.initializeTable(this.sellers);
+    this.data1.getAllCustomer_seller().subscribe(
+
+      (data:any)=>{
+        this.sellers=data;
+        console.log(this.sellers); 
+    //this.accounts = this.allEntity;
+    this.initializeTable(this.sellers);
+    console.log(this.sellers);
+      }
+);
   }
 
-  private initializeTable(sellers: CustomerSeller[]){
+  private initializeTable(sellers: seller[]){
     this.tableResourse = new DataTableResource(sellers);
     this.tableResourse.query({offset: 0})
       .then(items => this.items = items);
@@ -97,7 +57,7 @@ export class ViewSellersComponent implements OnInit {
       this.initializeTable(filteredSellers);
   }
 
-  editSellers(id: number){
+  /*editSellers(id: number){
     this.router.navigate(['/add-customer','s',id]);
   }
 
@@ -120,7 +80,7 @@ export class ViewSellersComponent implements OnInit {
          this.sellers.splice(index,1);
       }
     });
-  }
+  }*/
 
 }
 

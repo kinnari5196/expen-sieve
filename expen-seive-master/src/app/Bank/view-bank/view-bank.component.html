@@ -32,7 +32,7 @@
   
             <data-table-column
               [header]="'AC No'"
-              [property]="'acNo'"
+              [property]="'account_no'"
               [sortable]="true"
               [resizable]="true"
             >
@@ -40,7 +40,7 @@
   
             <data-table-column
               [header]="'gstNo'"
-              [property]="'gstNo'"
+              [property]="'gst_no'"
               [sortable]="true"
               [resizable]="true"
             >
@@ -48,7 +48,7 @@
   
             <data-table-column
               [header]="'BSR Code'"
-              [property]="'bsrCode'"
+              [property]="'bsrcode'"
               [sortable]="true"
               [resizable]="true"
             >
@@ -56,18 +56,18 @@
   
             <data-table-column
               [header]="'Address'"
-              [property]="'address'"
+              [property]="'addressline'"
               [sortable]="true"
               [resizable]="true"
             >
             <ng-template #dataTableCell let-item="item">
-              {{item.address + ', ' + item.area + ', ' + item.city + ', ' + item.state + ', ' + item.pincode}}
+              {{item.addressline + ', ' + item.city_name + ', ' + item.state_name + ', ' + item.pincode}}
             </ng-template>
             </data-table-column>
   
             <data-table-column
               [header]="'Date Since'"
-              [property]="'dateSince'"
+              [property]="'date_since'"
               [sortable]="true"
               [resizable]="true"
             >
@@ -75,21 +75,21 @@
 
             <data-table-column
               [header]="'Balance'"
-              [property]="'balance'"
+              [property]="'amount'"
               [sortable]="true"
               [resizable]="true"
             >
             <ng-template #dataTableCell let-item="item">
-              {{'&#x20b9;' + item.balance}}
+              {{'&#x20b9;' + item.amount}}
             </ng-template>
             </data-table-column>
   
-            <data-table-column
-              [property]="'acNo'"
+           <!-- <data-table-column
+              [property]="'bank_id'"
             >
               <ng-template #dataTableCell let-item="item">
                 <a 
-                  (click)="editBank(item.acNo)">
+                  (click)="editBank(item.bank_id)">
                   <i class="fa fa-pencil" aria-hidden="true"></i>
                 </a>
                 &nbsp;
@@ -97,11 +97,11 @@
                   rel="tooltip" 
                   title="Remove" 
                   style="color: #EE2D20;"
-                  (click)="deleteBank(item.acNo)">
+                  (click)="deleteBank(item.bank_id)">
                     <i class="fa fa-times"></i>
                 </a>
               </ng-template>
-            </data-table-column>
+            </data-table-column>-->
   
             <!-- <data-table-column
               [property]="'id'"

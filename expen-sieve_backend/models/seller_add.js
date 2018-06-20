@@ -1,6 +1,6 @@
 var mysql = require('mysql');
  var Customer_seller={
-     addCustomer_seller:function(Customer_seller){ 
+     addCustomer_seller:function(Customer_seller,callback){ 
 var connection = mysql.createConnection(
     {
       host     : 'localhost',
@@ -56,7 +56,7 @@ connection.beginTransaction(function(err) {
           });
         }
         console.log('Transaction Complete.');
-        connection.end();
+        connection.end(callback);
       });
       });
   });

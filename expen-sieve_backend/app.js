@@ -33,6 +33,7 @@ var DeleteInvoice=require('./routes/deleteinvoice');
 var DeleteProduct=require('./routes/deleteproduct');
 var DeletePurchase=require('./routes/deletepurchase');
 var DeleteSeller=require('./routes/deleteseller');
+var BankAdd=require('./routes/bankadd');
 
 
 
@@ -61,6 +62,7 @@ app.use('/acgroup',Acgroup);
 app.use('/acmaster',Acmaster);
 app.use('/address',Address);
 app.use('/bank',Bank);
+app.use('/bankadd',BankAdd);
 app.use('/company',Company);
 app.use('/customer',Customer);
 app.use('/invoice',Invoice);

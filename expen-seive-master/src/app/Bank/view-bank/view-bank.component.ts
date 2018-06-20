@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DataTableResource } from 'angular-4-data-table-bootstrap-4';
-import { Bank } from '../../models/bank';
 import { Router } from '@angular/router';
-import { BackEndCalls } from '../../services/backendcalls.service';
+import { view_bank_class } from './view_bank_class';
+import { BankServiceService } from './bank-service.service';
 
 @Component({
   selector: 'view-bank',
@@ -10,71 +10,31 @@ import { BackEndCalls } from '../../services/backendcalls.service';
   styleUrls: ['./view-bank.component.scss']
 })
 export class ViewBankComponent implements OnInit {
-  b: Bank[] = [
-    {
-      name: 'polkaDot',
-      acNo: 65498,
-      gstNo: 'mtr',
-      dateSince: '2-2-2018',
-      bsrCode: '998877',
-      address: '30 dfsfd',
-      area:'asd',
-      city:'sgf',
-      state: 'ojn',
-      pincode: '20000',
-      balance: 500
-    },
-    {
-      name: 'dolkaDot',
-      acNo: 98423,
-      gstNo: 'mtr',
-      dateSince: '2-2-2018',
-      bsrCode: '998877',
-      address: '30 dfsfd',
-      area:'asd',
-      city:'sgf',
-      state: 'ojn',
-      pincode: '20000',
-      balance: 500
-    },
-    {
-      name: 'molkaDot',
-      acNo: 8465132,
-      gstNo: 'mtr',
-      dateSince: '2-2-2018',
-      bsrCode: '998877',
-      address: '30 dfsfd',
-      area:'asd',
-      city:'sgf',
-      state: 'ojn',
-      pincode: '20000',
-      balance: 500
-    },
-  ];
 
-  banks: Bank[] = [];  //Complete list of banks
-  items: Bank[] = [];     ///list of banks only in current page
+
+  banks: view_bank_class[] = [];  //Complete list of banks
+  items: view_bank_class[] = [];     ///list of banks only in current page
   itemCount: number;
-  tableResourse: DataTableResource<Bank>;
+  tableResourse: DataTableResource<view_bank_class>;
 
-  constructor(private router: Router, private service: BackEndCalls) { }
+  constructor(private router: Router, private data1: BankServiceService) { }
 
   ngOnInit() {
   
-    this.service.getAllBanks()
-      .subscribe(response => {
-        console.log('idhar aya');
-        console.log(response.json().bank);
-        this.banks = response.json().bank;
-        this.initializeTable(this.banks);
-    });
-    // console.log(this.banks);
-    // this.banks = this.b;
-    // this.initializeTable(this.banks);
+    this.data1.getAllBank().subscribe(
+
+      (data:any)=>{
+        this.banks=data;
+        console.log(this.banks); 
+    //this.accounts = this.allEntity;
+    this.initializeTable(this.banks);
+    console.log(this.banks);
+      }
+);
    
   }
 
-  private initializeTable(banks: Bank[]){
+  private initializeTable(banks: view_bank_class[]){
     this.tableResourse = new DataTableResource(banks);
     this.tableResourse.query({offset: 0})
       .then(items => this.items = items);
@@ -98,7 +58,7 @@ export class ViewBankComponent implements OnInit {
       this.initializeTable(filteredBanks);
   }
 
-  editBank(id: number){
+  /*editBank(id: number){
     this.router.navigate(['/add-bank',id]);
   }
 
@@ -119,5 +79,5 @@ export class ViewBankComponent implements OnInit {
          this.banks.splice(index,1);
       }
     });
-  }
+  }*/
 }
