@@ -12,7 +12,7 @@ export class BackEndCalls {
   getPincodeURL = "/get_pincode.php";
 
   //company
-  getCompanyURL = '/get_company.php';
+//  getCompanyURL = '/get_company.php';
   
   //product
   getSingleProductURL = '/get_single_product.php';
@@ -24,7 +24,7 @@ export class BackEndCalls {
   
   //customer
   getAllCustomerSellerNamesURL = "/get_customer_seller_names.php";
-  getCustomerURL = '/get_customer.php';
+  //getCustomerURL = '/get_customer.php';
   postNewCustomerURL = "/add_customer_insert.php";
   getAllCustomersURL = "/get_all_customer.php";
   deleteCustomerSellerURL = "/delete_customer_seller.php";
@@ -43,7 +43,7 @@ export class BackEndCalls {
   getAllVouchersURL = "/get_voucher.php";
 
   //invoice
-  getInvoiceNoURL = "/invoice_number_generation.php";
+  //getInvoiceNoURL = "/invoice_number_generation.php";
   getIsIgstApplicableURL = "/is_igst_applicable.php";
   postInvoiceURL = "/invoice_insert.php";
   getInvoiceProductURL = "/get_invoice_product.php"
@@ -85,9 +85,9 @@ export class BackEndCalls {
   }
 
   //customer
-  getCustomers(){
+  /*getCustomers(){
     return this.http.get(AppSettings.BACKEND_URL + this.getCustomerURL)
-  }
+  }*/
   postNewCustomer(data){
     return this.http.post(AppSettings.BACKEND_URL + this.postNewCustomerURL, data)
   }
@@ -138,12 +138,12 @@ export class BackEndCalls {
   }
 
   //invoice
-  getInvoiceNo(){
+  /*getInvoiceNo(){
     return this.http.get(AppSettings.BACKEND_URL + this.getInvoiceNoURL)
-  }
-  getInvoiceCompany(){
+  }*/
+  /*getInvoiceCompany(){
     return this.http.get(AppSettings.BACKEND_URL + this.getCompanyURL)
-  }
+  }*/
   postInvoiceData(invoiceJsonData){
     return this.http.post(AppSettings.BACKEND_URL + this.postInvoiceURL, invoiceJsonData)    
   }

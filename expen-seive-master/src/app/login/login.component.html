@@ -11,8 +11,8 @@
 
       <form class="login-form" #f="ngForm" (ngSubmit)="submit(f)">
 
-        <input ngModel name="businessName" type="text" placeholder="username" />
-        <input ngModel name="password" type="password" placeholder="password" />
+        <input  [(ngModel)]="business_name" name="businessName" type="text" placeholder="username" />
+        <input  [(ngModel)]="password" name="password" type="password" placeholder="password" />
         <button type="submit">login</button>
       
       </form>

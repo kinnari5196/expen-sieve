@@ -28,6 +28,7 @@ import { EditPhoneNoComponent } from './customer/edit-phone-no/edit-phone-no.com
 import { EditCustomerComponent } from './customer/edit-customer/edit-customer.component'
 import { EditSellerComponent } from './customer/edit-seller/edit-seller.component';
 const routes: Routes =[
+  
     { path: 'login',      component: LoginComponent},      
     { path: 'dashboard',      component: HomeComponent,  canActivate: [LoginGuard]},
     { path: 'add-product/:product-id',      component: AddProductComponent,  canActivate: [LoginGuard] },

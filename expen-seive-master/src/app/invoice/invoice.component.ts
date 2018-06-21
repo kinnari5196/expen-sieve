@@ -38,7 +38,7 @@ export class InvoiceComponent implements OnInit {
   public invoiceProduct: Array<Select2OptionData>;
   public invoiceCompany: Array<Select2OptionData>;
   
-  public options: Select2Options;
+  public options: Select2OptionData;
 
   public tableData1: TableData;
   public userData: UserData;
@@ -69,23 +69,23 @@ export class InvoiceComponent implements OnInit {
         this.invoiceNo = Number(params.get('invoice-id'));
       });
 
-    this.service.getCustomers()
+    /*this.service.getCustomers()
       .subscribe(response => {
         console.log(response.json().customer);
         this.invoiceCustomer = response.json().customer;
         this.options = {
           allowClear: true
         }
-    });
+    });*/
 
-    this.service.getInvoiceCompany()
+   /* this.service.getInvoiceCompany()
       .subscribe(response => {
         console.log(response.json().company);
         this.invoiceCompany = response.json().company;
         this.options = {
           allowClear: true
         }
-    });
+    });*/
 
     this.tableData1 = {
       headerRow: [ '#', 'Company', 'Product', 'Price', 'Qty', 'Total', 'Remove'],
@@ -107,7 +107,7 @@ export class InvoiceComponent implements OnInit {
       grandTotalAmt: 0
    }
 
-   if(this.invoiceNo == 0){
+  /* if(this.invoiceNo == 0){
     this.service.getInvoiceNo()
       .subscribe(response => {
         console.log(response.json());
@@ -133,7 +133,7 @@ export class InvoiceComponent implements OnInit {
         // this.sgstPer= 2.5;
         // this.igstPer= 2.5;
     });
-    }
+    }*/
   }
 
   productNameChanged(event){

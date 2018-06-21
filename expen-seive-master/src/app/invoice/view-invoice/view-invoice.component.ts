@@ -1,14 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { DataTableResource } from 'angular-4-data-table-bootstrap-4';
 import { Router } from '@angular/router';
-import { BackEndCalls } from '../../services/backendcalls.service';
+import { view_invoice_class } from './view_invoice_class';
+import { InvoiceServiceService } from './invoice-service.service';
 
-declare interface ViewInvoiceTableItem{
-  invoiceNo: number;
-  invoiceDate: string;
-  customerName: string;
-  invoiceAmt: number;
-}
+
 
 @Component({
   selector: 'view-invoice',
@@ -17,48 +13,31 @@ declare interface ViewInvoiceTableItem{
 })
 export class ViewInvoiceComponent implements OnInit {
 
-  i: ViewInvoiceTableItem[] = [
-    {
-      invoiceNo: 1,
-      invoiceDate: '28-3-2018',
-      customerName: 'Mr Anthony Gonsalvis',
-      invoiceAmt: 15000
-    },
-    {
-      invoiceNo: 2,
-      invoiceDate: '2-5-2018',
-      customerName: 'Vijay Deenanath Chauhan',
-      invoiceAmt: 6000
-    },
-    {
-      invoiceNo: 3,
-      invoiceDate: '5-4-2017',
-      customerName: 'Mahendra Bahubali',
-      invoiceAmt: 700
-    }
-  ];
+ 
 
-  invoices: ViewInvoiceTableItem[] = [];  //Complete list of products
-  items: ViewInvoiceTableItem[] = [];     ///list of products only in current page
+  invoices: view_invoice_class[] = [];  //Complete list of products
+  items: view_invoice_class[] = [];     ///list of products only in current page
   itemCount: number;
-  tableResourse: DataTableResource<ViewInvoiceTableItem>;
+  tableResourse: DataTableResource<view_invoice_class>;
 
-  constructor(private router: Router, private service: BackEndCalls) { }
+  constructor(private router: Router, private data1: InvoiceServiceService) { }
 
   ngOnInit() {
 
-    this.service.getAllInvoices()
-    .subscribe(response => {
-      console.log(response.json().invoice);
-      this.invoices = response.json().invoice;
-      this.initializeTable(this.invoices);
-    });
-    // this.invoices = this.i;
-    // this.initializeTable(this.invoices);
-    // console.log(this.invoices);
+    this.data1.getAllInvoice().subscribe(
+
+      (data:any)=>{
+        this.invoices=data;
+        console.log(this.invoices); 
+        
+    //this.accounts = this.allEntity;
+    this.initializeTable(this.invoices);
+    console.log(this.invoices);
+      }
+);
   }
 
-  private initializeTable(bills: ViewInvoiceTableItem[]){
+  private initializeTable(bills: view_invoice_class[]){
     this.tableResourse = new DataTableResource(bills);
     this.tableResourse.query({offset: 0})
       .then(items => this.items = items);
@@ -75,13 +54,13 @@ export class ViewInvoiceComponent implements OnInit {
 
   filter(query: string){
     let filteredInvoices = (query) ?
-      this.invoices.filter(i => i.customerName.toLowerCase().includes(query.toLowerCase())) : 
+      this.invoices.filter(i => i.name.toLowerCase().includes(query.toLowerCase())) : 
       this.invoices;
 
       this.initializeTable(filteredInvoices);
   }
 
-  editInvoice(id: number){
+  /*editInvoice(id: number){
     this.router.navigate(['/add-invoice',id]);
   }
 
@@ -106,5 +85,5 @@ export class ViewInvoiceComponent implements OnInit {
 
   printInvoice(id){
     this.router.navigate(['/print-invoice',id.row.item.invoiceNo]);
-  }
+  }*/
 }

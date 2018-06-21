@@ -59,6 +59,8 @@ import { EditPhoneNoserviceService } from './customer/edit-phone-no/edit-phone-n
 import { EditCustomerComponent } from './customer/edit-customer/edit-customer.component';
 import { EditSellerComponent } from './customer/edit-seller/edit-seller.component'
 import { GetPincodeService1 } from './Bank/add-bank/get-pincode.service';
+import { InvoiceServiceService } from './invoice/view-invoice/invoice-service.service';
+
 
 
 @NgModule({
@@ -123,7 +125,8 @@ import { GetPincodeService1 } from './Bank/add-bank/get-pincode.service';
     GetPincodeService,
     BankServiceService,
     EditPhoneNoserviceService,
-    GetPincodeService1
+    GetPincodeService1,
+    InvoiceServiceService
   ],
   bootstrap: [AppComponent]
 })

@@ -20,12 +20,12 @@
             [items]="items"
             [itemCount]="itemCount"
             (reload)="reloadInvoices($event)"
-            (rowClick)="printInvoice($event)"
+           
           >
             
             <data-table-column
               [header]="'Invoice No'"
-              [property]="'invoiceNo'"
+              [property]="'invoice_id'"
               [sortable]="true"
               [resizable]="true"
             >
@@ -33,7 +33,7 @@
   
             <data-table-column
                 [header]="'Date'"
-                [property]="'invoiceDate'"
+                [property]="'date'"
                 [sortable]="true"
                 [resizable]="true"
             >
@@ -41,7 +41,7 @@
 
             <data-table-column
               [header]="'Customer'"
-              [property]="'customerName'"
+              [property]="'name'"
               [sortable]="true"
               [resizable]="true"
             >
@@ -49,14 +49,14 @@
   
             <data-table-column
               [header]="'Amount'"
-              [property]="'invoiceAmt'"
+              [property]="'grand_total'"
               [sortable]="true"
               [resizable]="true"
             >
             </data-table-column>
   
             <data-table-column
-              [property]="'invoiceNo'"
+              [property]="'invoice_id'"
             >
               <ng-template #dataTableCell let-item="item">
                 <a 
