@@ -71,7 +71,14 @@ export class InvoiceComponent implements OnInit {
         this.invoiceNo = Number(params.get('invoice-id'));
       });*/
 
-      this.invoiceNo=55;
+     // this.invoiceNo=55;
+     this.data1.Invoice_number_generate().subscribe(
+
+      (data:any)=>{
+        this.invoiceNo=data[0].id;
+        
+      } 
+  );
       this.data1.getAllCompany().subscribe(
 
         (data:any)=>{

@@ -34,7 +34,7 @@ var DeleteProduct=require('./routes/deleteproduct');
 var DeletePurchase=require('./routes/deletepurchase');
 var DeleteSeller=require('./routes/deleteseller');
 var BankAdd=require('./routes/bankadd');
-
+var invoice_num_generation =require('./routes/invoice_num_generation');
 
 
 var app = express();
@@ -80,7 +80,7 @@ app.use('/deleteinvoice',DeleteInvoice);
 app.use('/deleteproduct',DeleteProduct);
 app.use('/deletepurchase',DeletePurchase);
 app.use('/deleteseller',DeleteSeller);
-
+app.use('/invoice_num_generation',invoice_num_generation);
 
 
 

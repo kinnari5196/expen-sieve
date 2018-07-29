@@ -25,6 +25,11 @@ return db.query("insert into invoice(date,fk_cs_id,cgst,sgst,igst,sub_total,gran
 },*/
 updateInvoice:function(id,Invoice,callback){
   return db.query("update invoice set date=?, fk_cs_id=?, cgst=?, sgst=?, igst=?, sub_total=?, grand_total=?, cash_credit=?, additional_expenses=?, additional_expenses_text=?  where invoice_id=?",[Invoice.date,Invoice.fk_cs_id,Invoice.cgst,Invoice.sgst,Invoice.igst,Invoice.sub_total,Invoice.grand_total,Invoice.cash_credit,Invoice.additional_expenses,Invoice.additional_expenses_text,id],callback);
+ },
+
+ Invoice_number_generate:function(callback)
+ {
+    return db.query("select MAX(invoice_id)+1 as id from invoice",callback);
  }
  
  
