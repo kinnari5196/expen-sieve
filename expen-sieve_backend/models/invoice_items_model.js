@@ -16,7 +16,7 @@ return db.query("Select * from invoice_items where invoice_item_id=?",[id],callb
 
 addInvoiceitems:function(Invoice_items,callback){
 
-return db.query("insert into invoice_items(fk_invoice_id,quantity,amount,total,fk_product_id) values(?,?,?,?,?)",[Invoice_items.fk_invoice_id,Invoice_items.quantity,Invoice_items.amount,Invoice_items.total,Invoice_items.fk_product_id],callback);
+return db.query("insert into invoice_items(fk_invoice_id,quantity,amount,total,fk_product_id,fk_company_id) values(?,?,?,?,?,?)",[Invoice_items.fk_invoice_id,Invoice_items.quantity,Invoice_items.amount,Invoice_items.total,Invoice_items.fk_product_id,Invoice_item.fk_company_id],callback);
 },
 deleteInvoiceitems:function(id,callback){
 
@@ -24,7 +24,7 @@ deleteInvoiceitems:function(id,callback){
 
 },
 updateInvoiceitems:function(id,Invoice_items,callback){
-  return db.query("update invoice_items set fk_invoice_id=?,quantity=?,amount=?,total=?,fk_product_id=? where invoice_item_id=?",[Invoice_items.fk_invoice_id,Invoice_items.quantity,Invoice_items.amount,Invoice_items.total,Invoice_items.fk_product_id,id],callback);
+  return db.query("update invoice_items set fk_invoice_id=?,quantity=?,amount=?,total=?,fk_product_id=?,fk_company_id=? where invoice_item_id=?",[Invoice_items.fk_invoice_id,Invoice_items.quantity,Invoice_items.amount,Invoice_items.total,Invoice_items.fk_product_id,Invoice_items.fk_company_id,id],callback);
  }
  
  

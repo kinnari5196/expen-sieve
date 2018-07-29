@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Select2OptionData } from 'ng-select2/ng-select2/ng-select2.interface';
-import { BackEndCalls } from '../services/backendcalls.service';
 import { NgForm } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { Router,ActivatedRoute } from '@angular/router';
+import { companyDropdown } from './company_class';
+import { product } from './product_class';
+import { GetcompanyProductService } from './getcompany-product.service';
 
 declare interface TableData {
   headerRow: string[];
@@ -34,9 +36,9 @@ export class InvoiceComponent implements OnInit {
   private invoiceNo = 0;
   private isIgstApplicable: boolean = false;
 
-  public invoiceCustomer: Array<Select2OptionData>;
-  public invoiceProduct: Array<Select2OptionData>;
-  public invoiceCompany: Array<Select2OptionData>;
+  public invoiceCustomer: companyDropdown[];
+  public invoiceProduct: product[];
+  public invoiceCompany: companyDropdown[];
   
   public options: Select2OptionData;
 
@@ -61,31 +63,31 @@ export class InvoiceComponent implements OnInit {
   private igstPer: number = 2.5;
 
 
-  constructor(private service: BackEndCalls, private route: ActivatedRoute) { }
+  constructor( private data1:GetcompanyProductService, public _router: Router,public _acrouter:ActivatedRoute) { }
 
   ngOnInit() {
-    this.route.paramMap
+    /*this.route.paramMap
       .subscribe(params => {
         this.invoiceNo = Number(params.get('invoice-id'));
-      });
+      });*/
 
-    /*this.service.getCustomers()
-      .subscribe(response => {
-        console.log(response.json().customer);
-        this.invoiceCustomer = response.json().customer;
-        this.options = {
-          allowClear: true
-        }
-    });*/
+      this.invoiceNo=55;
+      this.data1.getAllCompany().subscribe(
 
-   /* this.service.getInvoiceCompany()
-      .subscribe(response => {
-        console.log(response.json().company);
-        this.invoiceCompany = response.json().company;
-        this.options = {
-          allowClear: true
+        (data:any)=>{
+          this.invoiceCompany=data;
+          console.log(this.invoiceCompany);
         }
-    });*/
+    );
+  
+  this.data1.getAllProduct().subscribe(
+  
+    (data:any)=>{
+      this.invoiceProduct=data;
+      console.log(this.invoiceProduct);
+    }
+    );
+  
 
     this.tableData1 = {
       headerRow: [ '#', 'Company', 'Product', 'Price', 'Qty', 'Total', 'Remove'],
@@ -136,7 +138,7 @@ export class InvoiceComponent implements OnInit {
     }*/
   }
 
-  productNameChanged(event){
+ /* productNameChanged(event){
     console.log('entered');
     this.service.getInvoiceProductPrice(JSON.stringify({"companyId": this.fieldDataRow[0], "productId": event.value}))
       .subscribe((data) => {
@@ -148,9 +150,9 @@ export class InvoiceComponent implements OnInit {
     console.log(JSON.stringify(["productId", event.value]));
     this.newTableRow[1] = event.data[0].text;
     this.fieldDataRow[1] = event.value;
-  }
+  }*/
 
-  companyChanged($event){
+  /*companyChanged($event){
     //console.log(JSON.stringify({"companyId": $event.value, "productId": $event.value}));
     this.service.getInvoiceProduct(JSON.stringify({"companyId": $event.value}))
       .subscribe((data) => {
@@ -165,16 +167,16 @@ export class InvoiceComponent implements OnInit {
     console.log($event);
     this.newTableRow[0] = $event.data[0].text;
     this.fieldDataRow[0] = $event.value;
-  }
+  }*/
 
-  customerChanged(event){
+  /*customerChanged(event){
     this.service.getIsIgstApplicable(JSON.stringify({"customerId": event.value}))
       .subscribe((data) => {
         //true means igst applicable
         console.log('igstApplicable: ' + data.json());
         
       });
-  }
+  }*/
 
   addRow(){
     if(this.newTableRow[0]==null || this.newTableRow[1]==null || this.newTableRow[2]==null || this.newTableRow[3]==null || this.newTableRow[4]==null){
@@ -240,10 +242,10 @@ export class InvoiceComponent implements OnInit {
 
     console.log(JSON.stringify(this.userData));
 
-    this.service.postInvoiceData(JSON.stringify(this.userData))
+    /*this.service.postInvoiceData(JSON.stringify(this.userData))
       .subscribe((data) => {
         console.log(data.json());
-      });
+      });*/
   }
 
 

@@ -13,7 +13,7 @@
                                     <div class="form-group">
                                         <label>Customer</label>
                                         <ng-select2 
-                                          ngModel
+                                          [ngModel]="invoiceCustomer"
                                           [value]="invoiceCustomerNo" 
                                           name="invoiceCustomer" 
                                           [data]="invoiceCustomer" 
@@ -22,7 +22,7 @@
                                           id="invoiceCustomer" 
                                           style="width:100% !important"
                                           (valueChanged)="customerChanged($event)">
-                                        </ng-select2>
+                                    </ng-select2>
                                     </div>
                                 </div>
                                
@@ -55,27 +55,48 @@
                                 <div class="col-md-3  ">
                                     <div class="form-group">
                                         <label>Company</label>
-                                        <ng-select2 
+                                        <!--<ng-select2 
                                           name="newRowCompany" 
                                           [data]="invoiceCompany" 
                                           [options]="options" 
                                           [width]="215" 
                                           id="invoiceCompany" 
                                           (valueChanged)="companyChanged($event)">
-                                        </ng-select2>
+                                        </ng-select2>-->
+
+                                         <div class="input-group">
+                                   
+                                            <!--<input type="number" name="fk_rest_id" [(ngModel)]="fk_rest_id" />-->
+                                            <select class="form-control" id="company_id" 
+                                          [(ngModel)]="company_id" name="company_id"
+                                          required style="width:190%;">
+                                          <option *ngFor="let s of invoiceCompany" [value]="s.company_id">{{s.name}}</option>
+                                          </select> 
+                                          </div>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label>Product</label>
-                                        <ng-select2   
+                                        <!--<ng-select2   
                                           name="invoiceProduct" 
                                           [data]="invoiceProduct" 
                                           [options]="options" 
                                           [width]="215" 
                                           id="invoiceProduct" 
                                           (valueChanged)="productNameChanged($event)">
-                                        </ng-select2>
+                                        </ng-select2>-->
+                                       <div class="input-group">
+                                   
+                                          
+                                            <select class="form-control" id="product_id" 
+                                          [(ngModel)]="product_id" name="product_id"
+                                          required style="width:190%;">
+                                          <option *ngFor="let h of invoiceProduct" [value]="h.product_id">{{h.product_name}}</option>
+                                          </select> 
+                                          </div>
+
+
                                     </div>
                                 </div>
                                 <div class="col-md-2">
