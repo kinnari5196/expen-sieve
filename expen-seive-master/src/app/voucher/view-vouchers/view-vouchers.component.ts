@@ -1,7 +1,8 @@
+import { VoucherserviceService } from './voucherservice.service';
 import { Component, OnInit } from '@angular/core';
-import { Voucher } from '../../models/view-voucher';
-import { BackEndCalls } from '../../services/backendcalls.service';
-
+import { voucher } from './voucher_class';
+import { Router } from '@angular/router';
+//import { VoucherserviceService } from './voucherserviceService';
 @Component({
   selector: 'view-vouchers',
   templateUrl: './view-vouchers.component.html',
@@ -9,50 +10,159 @@ import { BackEndCalls } from '../../services/backendcalls.service';
 })
 export class ViewVouchersComponent implements OnInit {
 
-  allVouchers: Voucher[] = [
-    {
-      id: 1,
-      from: 'Mr. Anthony Gonsalvis',
-      to: 'Mere Pass Maa Hai Bank',
-      date: new Date('2018-2-7'),
-      amt: 200 
-    },
-    {
-      id: 2,
-      from: 'Mr. Vijay Dinanath Chauhan',
-      to: 'Khalnayak Co. Pvt. Ltd.',
-      date: new Date('2018-2-7'),
-      amt: 200 
-    },
-    {
-      id: 3,
-      from: 'Ms. Hawa Hawaie',
-      to: 'Mr. Sambha on hill',
-      date: new Date('2018-2-7'),
-      amt: 2800 
-    },
-  ];
-  vouchers: Voucher[] = [];
-  searchAmount: string = "";
-  searchAccount: string = "";
+  Voucher: voucher[] = []; 
+  From_name : String[]=[];
+  To_name : String[]=[];
+    
+    searchAmount: string = "";
+    searchAccount: string = "";
 
-  constructor(private service: BackEndCalls) { }
+
+  constructor(private router: Router, private data1:VoucherserviceService) { }
 
   ngOnInit() {
 
-    console.log('before');
-    console.log(this.allVouchers);
-    this.service.getAllVouchers()
-      .subscribe(response => {
-        console.log(response.json().voucher);
-        this.allVouchers = this.vouchers = response.json().voucher;
-        
-      });
-    
-    //this.vouchers = this.allVouchers;
-  }
+    this.data1.getAllVoucher().subscribe(
 
-  filterAccount(query: string){
+      (data:any)=>{
+        this.Voucher=data;
+        console.log(this.Voucher);
+
+        for(let i in this.Voucher){
+var a = this.Voucher[i].from_id;
+console.log(a);
+this.data1.getMasterbyid(a).subscribe(
+(data1:any)=>{
+  var g1 = data1;
+
+  var grp:number = data1[0].fk_group_id;
+  var eid:number = data1[0].fk_entity_id;
+  console.log(grp);
+  console.log(eid);
+
+  if(grp==1)
+  {
+    this.data1.getCustomerbyid(eid).subscribe(
+      (data2:any)=>{
+        var sname = data2[0].name;
+        this.From_name[i]=sname;
+        console.log(this.From_name[i]);   
+      }
+
+    );
+ 
+  }
+  else if(grp==2)
+  {
+    this.data1.getCustomer_sellerbyid(eid).subscribe(
+      (data2:any)=>{
+        var sname = data2[0].name;
+        this.From_name[i]=sname;
+        console.log(this.From_name[i]);
+      }
+    );
+  }
+  else if(grp==3)
+  {
+    this.data1.getBankbyid(eid).subscribe(
+      (data2:any)=>{
+        var sname = data2[0].name;
+        this.From_name[i]=sname;
+        console.log(this.From_name[i]);   
+      }
+
+    );
+
+  
+  }
+  else
+  {
+    this.data1.getEntitybyid(eid).subscribe(
+      (data2:any)=>{
+        var sname = data2[0].name;
+        this.From_name[i]=sname;
+        console.log(this.From_name[i]);   
+      }
+
+    );
+
+  }
+}
+);
+  
+  
+        }
+for(let i in this.Voucher){
+var a = this.Voucher[i].to_id;
+console.log(a);
+this.data1.getMasterbyid(a).subscribe(
+(data1:any)=>{
+var g1 = data1;
+
+var grp:number = data1[0].fk_group_id;
+var eid:number = data1[0].fk_entity_id;
+console.log(grp);
+console.log(eid);
+
+if(grp==1)
+{
+  this.data1.getCustomerbyid(eid).subscribe(
+    (data2:any)=>{
+      var sname = data2[0].name;
+      this.To_name[i]=sname;
+      console.log(this.To_name[i]);   
+    }
+
+  );
+}
+else if(grp==2)
+{
+  this.data1.getCustomer_sellerbyid(eid).subscribe(
+    (data2:any)=>{
+      var sname = data2[0].name;
+      this.To_name[i]=sname;
+      console.log(this.To_name[i]);
+    }
+  );
+}
+else if(grp==3)
+{
+  this.data1.getBankbyid(eid).subscribe(
+    (data2:any)=>{
+     
+      var sname = data2[0].name;
+      this.To_name[i]=sname;
+      console.log(this.To_name[i]); 
+      console.log(data2[0]); 
+    }
+
+  );
+}
+else
+{
+  this.data1.getEntitybyid(eid).subscribe(
+    (data2:any)=>{
+      var sname = data2[0].name;
+      this.To_name[i]=sname;
+      console.log(this.To_name[i]);   
+    }
+
+  );
+}
+}
+);
+
+
+      }
+    }
+);
+
+
+}
+
+   
+
+  /*filterAccount(query: string){
     let filteredVouchers = (query) ?
       this.allVouchers.filter(v => (v.from.toLowerCase().includes(query.toLowerCase()) || v.to.toLowerCase().includes(query.toLowerCase()))) : 
       this.allVouchers;
@@ -67,5 +177,5 @@ export class ViewVouchersComponent implements OnInit {
     this.allVouchers;
 
     this.vouchers = filteredVouchers;
-  }
+  }*/
 }

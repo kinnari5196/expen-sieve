@@ -46,7 +46,7 @@ export class AddSellerComponent implements OnInit {
     this.data1.addCustomer_seller(new add_seller_class(this.seller_id,this.name,this.addressline,this.fk_pincode,this.fk_phone_id,this.gst_no,this.date_since,this.amount,this.phone_no1,this.phone_no2)).subscribe(
       (data:any)=>{
       alert('added');
-        this._router.navigate(['/customer-manager']);
+        this._router.navigate(['/view-seller']);
       },
       function(error)
       {

@@ -11,7 +11,7 @@ return db.query("Select b.*,pin.*,c.*,s.*,am.* from bank as b,address as pin,cit
 
 getBankbyid:function(id,callback)//aa bdhi model ma nakhvu
 {
-return db.query("Select b.*,pin.*,c.*,s.* from bank as b,address as pin,city as c,state as s where b.fk_pincode=pin.pincode and pin.fk_city_id=c.city_id and c.fk_state_id=s.state_id and b.isactive=0 and bank_id=?",[id],callback);
+return db.query("Select b.*,pin.*,c.*,s.* from bank as b,address as pin,city as c,state as s where b.fk_pincode=pin.pincode and pin.fk_city_id=c.city_id and c.fk_state_id=s.state_id and b.isactive=0 and b.bank_id=?",[id],callback);
 },
 
 addBank:function(Bank,callback){

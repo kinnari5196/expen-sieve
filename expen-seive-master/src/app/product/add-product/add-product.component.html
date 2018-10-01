@@ -4,12 +4,14 @@
       <div class="col-md-12">
         <div class="card">
           <div class="content">
-            <form #productForm="ngForm" (ngSubmit)="onAdd()">
+            <form ngNativeValidate  #f="ngForm" role="form" (ngSubmit)="onAdd()">
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
                     <label>Product Name</label>
-                    <input  [(ngModel)]="product_name" name="product_name" type="text" class="form-control" placeholder="Name" value="" required>
+                    <input  [(ngModel)]="product_name" name="product_name"  type="text" class="form-control" placeholder="Name" value="" required>
+                <!--    <input  [(ngModel)]="product_name" name="product_name" formControlName="product_name" type="text" class="form-control" placeholder="Name" value="" required="true">-->
+               <!--<div *ngIf="productForm.controls['product_name'].errors" class="text-danger">product name is required</div>-->
                   </div>
                 </div>
               </div>
@@ -101,11 +103,12 @@
                       <div class="form-group">
                         <label>Rate (per unit)</label>
                         <input required [(ngModel)]="price" name="productPrice" type="text" class="form-control" placeholder="Price(₹)" value="">
-                      </div>
+                      </div> 
                     </div>
               </div>
               <div class="col-md-6">
-                <button type="submit" class="btn btn-default btn-fill pull-right">Add</button>
+                <!--  <button type="submit"  [disabled]="!f.form.valid" class="btn btn-default btn-fill pull-right">Add</button>-->
+                <button type="submit"   class="btn btn-default btn-fill pull-right">Add</button>
               </div>
               <div class="clearfix"></div>
             </form>

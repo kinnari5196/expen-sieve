@@ -9,14 +9,14 @@
           <div class="content">
 
 
-            <form #f="ngForm" (ngSubmit)="submit(f)">
+            <form ngNativeValidate #f="ngForm" (ngSubmit)="onAdd()">
               <div class="row">
                 
                 <!--date of voucher-->
                 <div class="col-md-4">
                   <div class="form-group">
                     <label>Date *</label>
-                    <input required ngModel name="voucherDate" type="date" class="form-control" placeholder="" value="">
+                    <input required [(ngModel)]="date" name="date" type="date" class="form-control" placeholder="" value="">
                   </div>
                 </div>
               </div>
@@ -27,8 +27,11 @@
                   <div class="form-group">
                     <label>From *</label>
                     <br>
-                    <ng-select2 required ngModel name="voucherFrom" [data]="voucherFrom" [options]="options" [width]="313" id="voucherFrom" style="width:100% !important">
-                    </ng-select2>
+                    <select class="form-control" id="from_id" 
+                    [(ngModel)]="from_id" name="from_id"
+                    required style="width:50%;">
+                    <option *ngFor="let s of ac_master_dropdowm,let h of dropdown_name" [value]="s.account_id">{{h.name}}</option>
+                    </select>
                   </div>
                 </div>
               </div>
@@ -38,8 +41,11 @@
                   <div class="form-group">
                     <label>To *</label>
                     <br>
-                    <ng-select2 required ngModel name="voucherTo" [data]="voucherTo" [options]="options" [width]="313" id="voucherTo" style="width:100% !important">
-                    </ng-select2>
+                    <select class="form-control" id="to_id" 
+                    [(ngModel)]="to_id" name="to_id"
+                    required style="width:50%;">
+                    <option *ngFor="let s of ac_master_dropdowm,let h of dropdown_name" [value]="s.account_id">{{h.name}}</option>
+                    </select>
                   </div>
                 </div>
               </div>
@@ -49,7 +55,7 @@
                   <div class="col-md-4">
                     <div class="form-group">
                       <label>Amount *</label>
-                      <input required class="form-control" type="number" ngModel name="voucherAmt">
+                      <input required class="form-control" [(ngModel)]="amount" type="number"  name="amount">
                     </div>
                   </div>
                 </div>
@@ -59,8 +65,8 @@
                 <!--cash/cheque-->
                 <div class="col-md-4">
                   <div class="form-group">
-                    <input required [(ngModel)]="cashCheque" type="radio" name="optionsRadios" data-toggle="radio" id="optionsRadios1" value="cash" checked> Cash &nbsp; &nbsp;
-                    <input required [(ngModel)]="cashCheque" type="radio" name="optionsRadios" data-toggle="radio" id="optionsRadios2" value="cheque"> Cheque
+                    <input required [(ngModel)]="cash_cheque" type="radio" name="cash_cheque" data-toggle="radio" id="optionsRadios1" value="cash" checked> Cash &nbsp; &nbsp;
+                    <input required [(ngModel)]="cash_cheque" type="radio" name="cash_cheque" data-toggle="radio" id="optionsRadios2" value="cheque"> Cheque
 
                     <input [disabled]="isChequeNoDisabled()" name="voucherChequeNo" type="text" class="form-control" placeholder="Cheque Number" value="">
                   </div>

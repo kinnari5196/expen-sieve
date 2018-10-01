@@ -1,6 +1,7 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { Voucher } from './models/view-voucher';
+import { BrowserModule, platformBrowser } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
@@ -61,6 +62,8 @@ import { EditSellerComponent } from './customer/edit-seller/edit-seller.componen
 import { GetPincodeService1 } from './Bank/add-bank/get-pincode.service';
 import { InvoiceServiceService } from './invoice/view-invoice/invoice-service.service';
 import { GetcompanyProductService } from './invoice/getcompany-product.service';
+import { CommonModule } from '@angular/common';
+import { VoucherserviceService } from './voucher/view-vouchers/voucherservice.service';
 
 
 @NgModule({
@@ -98,6 +101,7 @@ import { GetcompanyProductService } from './invoice/getcompany-product.service';
     EditSellerComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     FormsModule,
     HttpModule,
@@ -109,7 +113,9 @@ import { GetcompanyProductService } from './invoice/getcompany-product.service';
     LbdModule,
     NgSelect2Module,
     DataTableModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [
     BackEndCalls,
@@ -127,7 +133,8 @@ import { GetcompanyProductService } from './invoice/getcompany-product.service';
     EditPhoneNoserviceService,
     GetPincodeService1,
     InvoiceServiceService,
-    GetcompanyProductService
+    GetcompanyProductService,
+    VoucherserviceService
   ],
   bootstrap: [AppComponent]
 })

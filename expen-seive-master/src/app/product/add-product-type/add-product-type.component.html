@@ -1,7 +1,7 @@
 <!-- <div id="add-type" class="tab-pane"> -->
     <div class="card">
       <div class="content">
-        <form #productForm="ngForm" (ngSubmit)="onAdd()">
+        <form ngNativeValidate #productForm="ngForm" (ngSubmit)="onAdd()">
           <div class="row">
             <!--Product type description-->
             <div class="col-md-5">
@@ -18,9 +18,9 @@
             <!--meter/quantity-->
             <div class="col-md-5">
               <div class="form-group">
-                <input type="radio" name="m" [(ngModel)]="meter_qty"  data-toggle="radio" id="optionsRadios1" value="m" checked>
+                <input  type="radio" name="m" [(ngModel)]="meter_qty"  data-toggle="radio" id="optionsRadios1" value="m" checked>
                 <i></i>Meter &nbsp; &nbsp;
-                <input type="radio" name="q" [(ngModel)]="meter_qty" data-toggle="radio" id="optionsRadios2" value="q">
+                <input  type="radio" name="q" [(ngModel)]="meter_qty" data-toggle="radio" id="optionsRadios2" value="q">
                <i></i>Quantity
 
               <!--  <textarea placeholder="description" rows="3"  class="form-control" placeholder="Here can be your description" value=""> </textarea>-->

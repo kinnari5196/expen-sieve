@@ -1,7 +1,13 @@
+import { VoucherserviceService } from './../view-vouchers/voucherservice.service';
 import { Component, OnInit } from '@angular/core';
 import { Select2OptionData } from 'ng-select2/ng-select2/ng-select2.interface';
 import { NgForm } from '@angular/forms';
-import { BackEndCalls } from '../../services/backendcalls.service';
+import { master} from './master_class';
+import { Subscription } from 'rxjs/Rx';
+import { Router,ActivatedRoute } from '@angular/router';
+import { voucher } from '../view-vouchers/voucher_class';
+
+
 
 @Component({
   selector: 'add-voucher',
@@ -10,33 +16,88 @@ import { BackEndCalls } from '../../services/backendcalls.service';
 })
 export class AddVoucherComponent implements OnInit {
 
-  public voucherFrom: Array<Select2OptionData>;
-  public voucherTo: Array<Select2OptionData>;
-  public options: Select2Options;
-
+  ac_master_dropdowm:master[]=[];
   cashCheque = "cash";
+  dropdown_name:string[]=[];
 
-  constructor(private service: BackEndCalls) { }
+  voucher_id:number;
+  from_id:number;
+  to_id:number;
+  date:string;
+  amount:number;
+  cash_cheque:number;
+  cheque_no:number;
+  fk_business_id:number;
+  constructor( private data1:VoucherserviceService,  public _router: Router,public _acrouter:ActivatedRoute ) { }
 
   ngOnInit() {
 
-    this.service.getVoucherNames()
-      .subscribe(response => {
-        console.log(response.json());
-        this.voucherFrom = response.json().ac_master;
-        this.voucherTo = response.json().ac_master;
-        this.options = {
-          allowClear: true
-        }
-      });
-    
-    // this.voucherFrom = [{"id":"1","text":"arvind"},{"id":"2","text":"raymond"}];
-    // this.voucherTo = [{"id":"1","text":"arvind"},{"id":"2","text":"raymond"}];
-    // this.options = {
-    //   allowClear: true
-    // }
-  }
+    this.data1.getAllMaster().subscribe(
 
+      (data:any)=>{
+        this.ac_master_dropdowm=data;
+        console.log(this.ac_master_dropdowm);
+for(let i in this.ac_master_dropdowm)
+{
+        var grp:number = data[i].fk_group_id;
+        var eid:number = data[i].fk_entity_id;
+
+        console.log(grp);
+        console.log(eid);
+
+        if(grp==1)
+        {
+          this.data1.getCustomerbyid(eid).subscribe(
+            (data2:any)=>{
+              var sname = data2[0].name;
+              this.dropdown_name[i]=sname;
+              console.log(this.dropdown_name[i]);   
+            }
+      
+          );
+        
+        }
+        else if(grp==2)
+        {
+          this.data1.getCustomer_sellerbyid(eid).subscribe(
+            (data2:any)=>{
+              var sname = data2[0].name;
+              this.dropdown_name[i]=sname;
+              console.log(this.dropdown_name[i]);
+            }
+          );
+        }
+        else if(grp==3)
+        {
+          this.data1.getBankbyid(eid).subscribe(
+            (data2:any)=>{
+              var sname = data2[0].name;
+              this.dropdown_name[i]=sname;
+              console.log(this.dropdown_name[i]);   
+            }
+      
+          );
+      
+      
+        }
+        else
+        {
+          this.data1.getEntitybyid(eid).subscribe(
+            (data2:any)=>{
+              var sname = data2[0].name;
+              this.dropdown_name[i]=sname;
+              console.log(this.dropdown_name[i]);   
+            }
+      
+          );
+          }
+    }
+  }
+  );
+    
+    
+}
+/*
   submit(form: NgForm) {
     console.log(form.valid);
     if(!form.valid)
@@ -51,6 +112,28 @@ export class AddVoucherComponent implements OnInit {
           console.log(data);
         });
     }
+  }*/
+
+  onAdd()
+  {
+    this.data1.addVoucher(new voucher(this.voucher_id,this.from_id,this.to_id,this.date,this.amount,this.cash_cheque,this.cheque_no,this.fk_business_id)).subscribe(
+      (data:any)=>{
+
+       
+      alert('added');
+      
+        this._router.navigate(['/view-product']);
+      },
+      function(error)
+      {
+        console.log(error);
+      },
+      function()
+      {
+        console.log("voucher add");
+      }
+    );
+    
   }
 
   isChequeNoDisabled(){
@@ -60,7 +143,7 @@ export class AddVoucherComponent implements OnInit {
       return false;
   }
 
-  notification = {
+  /*notification = {
     errorNotification: function(from, align){
       
       $['notify']({
@@ -93,5 +176,5 @@ export class AddVoucherComponent implements OnInit {
         }
       }); 
     }
-  }
+  }*/
 }

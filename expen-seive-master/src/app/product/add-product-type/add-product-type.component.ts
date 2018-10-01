@@ -32,7 +32,7 @@ export class AddProductTypeComponent implements OnInit {
       alert('added');
       console.log(this.product_type_id,this.product_type_description,this.meter_qty);
     
-    this._router.navigate(['/view-product']);
+    this._router.navigate(['/add-product-type']);
       },
       function(error)
       {

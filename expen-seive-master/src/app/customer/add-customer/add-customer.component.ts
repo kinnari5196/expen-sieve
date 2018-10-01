@@ -52,7 +52,7 @@ export class AddCustomerComponent implements OnInit {
       (data:any)=>{
       alert('added');
       
-        this._router.navigate(['/customer-manager']);
+        this._router.navigate(['/view-customer']);
       },
       function(error)
       {

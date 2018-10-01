@@ -27,6 +27,9 @@ import { EditProductComponent } from './product/edit-product/edit-product.compon
 import { EditPhoneNoComponent } from './customer/edit-phone-no/edit-phone-no.component';
 import { EditCustomerComponent } from './customer/edit-customer/edit-customer.component'
 import { EditSellerComponent } from './customer/edit-seller/edit-seller.component';
+import { ViewCustomersComponent } from './customer/view-customers/view-customers.component';
+import { ViewSellersComponent } from './customer/view-sellers/view-sellers.component';
+
 const routes: Routes =[
   
     { path: 'login',      component: LoginComponent},      
@@ -47,8 +50,8 @@ const routes: Routes =[
     { path: 'accounting-entity-manager',      component: AccountingEntityManagerComponent,  canActivate: [LoginGuard]},
     { path: 'add-accounting-entity/:entity-id',      component: AddAccountingEntityComponent,  canActivate: [LoginGuard]},
     { path: 'add-accounting-entity',      component: AddAccountingEntityComponent,  canActivate: [LoginGuard]},
-    { path: 'add-product-type',      component: AddProductTypeComponent,  canActivate: [LoginGuard]},
-    {path:'add-product/:product_id', component:AddProductComponent, canActivate: [LoginGuard]},
+    { path: 'add-product-type',      component:AddProductTypeComponent,  canActivate: [LoginGuard]},
+    {path:  'add-product/:product_id', component:AddProductComponent, canActivate: [LoginGuard]},
     { path: 'product-manager',      component: ProductManagerComponent,  canActivate: [LoginGuard]},
     { path: 'view-product',      component: ViewProductsComponent,  canActivate: [LoginGuard]},
     { path: 'edit-product/:product_id',      component:EditProductComponent ,  canActivate: [LoginGuard]},
@@ -56,7 +59,9 @@ const routes: Routes =[
     { path: 'bank-manager',      component: BankManagerComponent,  canActivate: [LoginGuard]},
     { path: 'add-bank/:bank_id',      component: AddBankComponent,  canActivate: [LoginGuard]}, 
     { path: 'add-bank',      component: AddBankComponent,  canActivate: [LoginGuard]}, 
-    { path: 'balancesheet',      component: BalancesheetComponent,  canActivate: [LoginGuard]}, 
+    { path: 'balancesheet',      component: BalancesheetComponent,  canActivate: [LoginGuard]},
+    { path: 'view-customer',      component: ViewCustomersComponent,  canActivate: [LoginGuard]},
+    { path: 'view-seller',      component: ViewSellersComponent,  canActivate: [LoginGuard]}, 
     { path: '',          redirectTo: 'dashboard', pathMatch: 'full',  canActivate: [LoginGuard] }
 ];
 

@@ -9,10 +9,10 @@
         <img style="margin-top: -15px" src="../../assets/img/shankar-textile-logo.png" />
       </div>
 
-      <form class="login-form" #f="ngForm" (ngSubmit)="submit(f)">
+      <form ngNativeValidate class="login-form" #f="ngForm" (ngSubmit)="submit(f)">
 
-        <input  [(ngModel)]="business_name" name="businessName" type="text" placeholder="username" />
-        <input  [(ngModel)]="password" name="password" type="password" placeholder="password" />
+        <input  [(ngModel)]="business_name" name="businessName" type="text" placeholder="username" required />
+        <input  [(ngModel)]="password" name="password" type="password" placeholder="password" required />
         <button type="submit">login</button>
       
       </form>
